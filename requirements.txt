@@ -1,6 +1,7 @@
 decompyle3==3.9.1
 ruff==0.4.3
 future==1.0.0
+autopep8==2.0.4
 mypy==1.4.1
 build==1.0.3
 twine==4.0.2
