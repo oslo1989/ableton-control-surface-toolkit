@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools ~=69.0.3"]
+requires = ["setuptools ~=68.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "ableton-control-surface-core"
-version = "0.0.3"
+version = "0.0.5"
 authors = [
     {name = "Martin Sahlen", email = "martin8900@gmail.com"}
 ]
