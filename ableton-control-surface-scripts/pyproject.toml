@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ableton-control-surface-scripts"
+version = "0.0.1"
+authors = [
+    {name = "Martin Sahlen", email = "martin8900@gmail.com"}
+]
+description = "Decompiled control surface scripts from Ableton Live's Python API to help with reverse engineering and how other well known interfaces work."
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "ableton-control-surface-core == 1.0.0"
+]
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"

@@ -1,0 +1,18 @@
+[project]
+name = "ableton-control-surface-toolkit"
+version = "0.0.1"
+description = ""
+dynamic = ["dependencies"]
+requires-python=">=3.7"
+
+[tool.ruff]
+extend = "ruff.toml"
+ignore = ["COM812"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "silent"
+disallow_untyped_defs = true

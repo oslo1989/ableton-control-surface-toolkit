@@ -1,0 +1,8 @@
+Live
+MidiRemoteScript
+_Framework
+_Generic
+_MxDCore
+_Tools
+_Userscript
+ableton

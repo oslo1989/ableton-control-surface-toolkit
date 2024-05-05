@@ -1,0 +1,134 @@
+# decompyle3 version 3.9.0
+# Python bytecode version base 3.7.0 (3394)
+# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
+# [Clang 14.0.6 ]
+# Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/touch_strip_controller.py
+# Compiled at: 2023-11-21 10:21:18
+# Size of source mod 2**32: 5127 bytes
+from ableton.v2.control_surface import Component
+from ableton.v2.control_surface.control import ToggleButtonControl
+
+from . import consts
+from .message_box_component import Messenger
+from .touch_encoder_element import TouchEncoderObserver
+from .touch_strip_element import (
+    DEFAULT_BEHAVIOUR,
+    MODWHEEL_BEHAVIOUR,
+    SimpleBehaviour,
+    TouchStripModes,
+    TouchStripStates,
+)
+
+
+class TouchStripControllerComponent(Component):
+    def __init__(self, *a, **k):
+        (super().__init__)(*a, **k)
+        self._touch_strip = None
+        self._parameter = None
+
+    def set_parameter(self, parameter):
+        self._parameter = parameter
+        self._update_strip_state()
+
+    def set_touch_strip(self, touch_strip):
+        self._touch_strip = touch_strip
+        self._update_strip_state()
+
+    def _update_strip_state(self):
+        if self._touch_strip is not None:
+            if self._parameter is not None:
+                self._touch_strip.behaviour = SimpleBehaviour(self._calculate_strip_mode())
+                self._touch_strip.connect_to(self._parameter)
+            else:
+                self._touch_strip.release_parameter()
+
+    def _calculate_strip_mode(self):
+        if self._parameter.min == -1 * self._parameter.max:
+            mode = TouchStripModes.CUSTOM_PAN
+        else:
+            mode = TouchStripModes.CUSTOM_DISCRETE if self._parameter.is_quantized else TouchStripModes.CUSTOM_VOLUME
+        return mode
+
+
+class TouchStripEncoderConnection(Component, TouchEncoderObserver):
+    def __init__(self, strip_controller, touch_button, *a, **k):
+        (super().__init__)(*a, **k)
+        self._strip_controller = strip_controller
+        self._touch_button = touch_button
+        self._encoder = None
+
+    def disconnect(self):
+        self._set_touched_encoder(None)
+        super().disconnect()
+
+    def on_encoder_touch(self, encoder):
+        self._on_encoder_change(encoder)
+
+    def on_encoder_parameter(self, encoder):
+        self._on_encoder_change(encoder)
+
+    def _on_encoder_change(self, encoder):
+        if consts.PROTO_TOUCH_ENCODER_TO_STRIP:
+            if self._encoder in (encoder, None):
+                self._set_touched_encoder(encoder if self._can_use_touch_encoder(encoder) else None)
+
+    def _can_use_touch_encoder(self, encoder):
+        is_usable = encoder.is_pressed() and encoder.mapped_parameter() is not None
+        can_be_initial_encoder = self._encoder is None and not self._touch_button.is_pressed()
+        should_trigger_update = self._encoder == encoder
+        return is_usable and (can_be_initial_encoder or should_trigger_update)
+
+    def _set_touched_encoder(self, encoder):
+        self._encoder = encoder
+        parameter = encoder.mapped_parameter() if encoder is not None else None
+        self._strip_controller.set_parameter(parameter)
+        self._strip_controller.set_enabled(parameter is not None)
+
+
+class TouchStripPitchModComponent(Component, Messenger):
+    touch_strip_toggle = ToggleButtonControl()
+
+    def __init__(self, *a, **k):
+        (super().__init__)(*a, **k)
+        self._touch_strip = None
+        self._touch_strip_indication = None
+
+    def set_touch_strip(self, control):
+        self._touch_strip = control
+        self._update_touch_strip()
+
+    def _update_touch_strip(self):
+        if self._touch_strip:
+            self._touch_strip.behaviour = (
+                MODWHEEL_BEHAVIOUR if self.touch_strip_toggle.is_toggled else DEFAULT_BEHAVIOUR
+            )
+
+    @touch_strip_toggle.toggled
+    def touch_strip_toggle(self, toggled, button):
+        self._update_touch_strip()
+        self._update_touch_strip_indication()
+        self.show_notification(
+            consts.MessageBoxText.TOUCHSTRIP_MODWHEEL_MODE
+            if toggled
+            else consts.MessageBoxText.TOUCHSTRIP_PITCHBEND_MODE,
+        )
+
+    def set_touch_strip_indication(self, control):
+        self._touch_strip_indication = control
+        self._update_touch_strip_indication()
+
+    def _update_touch_strip_indication(self):
+        if self._touch_strip_indication:
+            self._touch_strip_indication.set_mode(TouchStripModes.CUSTOM_FREE)
+            self._touch_strip_indication.send_state(
+                [
+                    TouchStripStates.STATE_FULL if self.touch_strip_toggle.is_toggled else TouchStripStates.STATE_HALF
+                    for _ in range(self._touch_strip_indication.state_count)
+                ],
+            )
+
+    def update(self):
+        super().update()
+        if self.is_enabled():
+            self._update_touch_strip()
+            self._update_touch_strip_indication()
