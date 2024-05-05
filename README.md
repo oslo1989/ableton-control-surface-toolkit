@@ -7,6 +7,8 @@ TODO
 - describe linting, formatting and fixing code
 - mo
 
+- link to "reference implementatio" in the faderfox code
+
 https://pypi.org/project/ableton-control-surface-scripts/ 
 
 https://pypi.org/project/ableton-control-surface-core/
