@@ -53,12 +53,5 @@ restart-12: kill copy-doc-script launch12
 restart: restart-12
 
 upload-pip:
-	@cd ableton-control-surface-core
-	@rm -rf dist
-	@python -m build
-	@twine upload dist/*
-	@cd ..
-	@cd ableton-control-surface-scripts
-	@rm -rf dist
-	@python -m build
-	@twine upload dist/*
+	@cd ableton-control-surface-core && rm -rf dist && rm -rf src/ableton_control-surface_core.egg-info && python -m build && twine upload dist/*
+	@cd ableton-control-surface-scripts && rm -rf dist && rm -rf src/ableton_control-surface_core.egg-info && python -m build && twine upload dist/*
