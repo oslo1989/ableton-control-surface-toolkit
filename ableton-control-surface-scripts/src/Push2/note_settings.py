@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push2/note_settings.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 5061 bytes
-from past.utils import old_div
-
 from ableton.v2.base import listenable_property, listens
 from ableton.v2.control_surface.control import StepEncoderControl
 from ableton.v2.control_surface.elements.color import SelectedClipColor
+from past.utils import old_div
 from pushbase.note_settings_component import NoteSettingBase, NoteSettingsComponentBase, step_offset_percentage
 
 from .colors import SelectedDrumPadColor

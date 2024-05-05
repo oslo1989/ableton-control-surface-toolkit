@@ -7,12 +7,11 @@
 # Size of source mod 2**32: 5106 bytes
 from itertools import count
 
-from past.utils import old_div
-
 from ableton.v2.base import forward_property, listens_group
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl
 from ableton.v2.control_surface.elements import DisplayDataSource, adjust_string
+from past.utils import old_div
 from pushbase import consts
 from pushbase.user_component import UserComponentBase
 

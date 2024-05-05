@@ -9,8 +9,6 @@ from collections import namedtuple
 from functools import partial
 from math import ceil
 
-from past.utils import old_div
-
 from ableton.v2.base import clamp, index_if, listenable_property, listens
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import (
@@ -20,6 +18,7 @@ from ableton.v2.control_surface.control import (
     ToggleButtonControl,
     control_list,
 )
+from past.utils import old_div
 from pushbase.melodic_pattern import NOTE_NAMES, ROOT_NOTES, SCALES
 
 Layout = namedtuple("Layout", ("name", "interval"))

@@ -5,8 +5,6 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push2/shifter.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 6547 bytes
-from past.builtins import unicode
-
 import Live
 from ableton.v2.base import EventObject, listens
 from ableton.v2.control_surface import (
@@ -15,6 +13,7 @@ from ableton.v2.control_surface import (
     LiveObjectDecorator,
     get_parameter_by_name,
 )
+from past.builtins import unicode
 
 from .device_component import ButtonRange, DeviceComponentWithTrackColorViewData
 from .device_options import DeviceOnOffOption

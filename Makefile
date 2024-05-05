@@ -6,7 +6,7 @@ install-deps:
 	@pip install --upgrade pip
 	@pip install -r requirements.txt
 
-launch:
+launch-ableton:
 	@open /Applications/Ableton*12*
 
 kill:
@@ -23,7 +23,7 @@ copy-generated-live:
 	@cp -r ~/enabler-output/Live build
 	@cp -r ~/enabler-output/MidiRemoteScript build
 
-copy-generated: copy-generated-live lint-fix format copy-packages
+copy-generated: copy-generated-live copy-packages
 
 copy-packages:
 	@python copy_packages.py
@@ -36,27 +36,30 @@ decompile: decompile-live fix-parse-errors lint-fix format
 delete-generated-files:
 	 @ls -d */ | grep -v build | xargs rm -rf
 
+lint-format: lint-fix format lint
+
 lint-fix:
-	@ruff build --quiet --config ruff.toml | grep E402 | cut -d: -f1 | xargs autopep8 --in-place # this uses the base config that ignores some rules
-	@ruff build --quiet --fix --unsafe-fixes --config ruff.toml
+	@ruff ableton-control-surface-core --quiet --config ruff.toml | grep E402 | cut -d: -f1 | xargs autopep8 --in-place # this uses the base config that ignores some rules
+	@ruff ableton-control-surface-scripts --quiet --config ruff.toml | grep E402 | cut -d: -f1 | xargs autopep8 --in-place # this uses the base config that ignores some rules
+	@ruff ableton-control-surface-core --quiet --fix --unsafe-fixes --config ruff.toml
+	@ruff ableton-control-surface-scripts --quiet --fix --unsafe-fixes --config ruff.toml
 	@ruff AbletonDocSurface --quiet --fix --unsafe-fixes
 
 lint:
-	@ruff build --quiet --config ruff.toml
+	@ruff ableton-control-surface-core --quiet --config ruff.toml
+	@ruff ableton-control-surface-scripts --quiet --config ruff.toml
 	@ruff AbletonDocSurface --quiet
 	@mypy AbletonDocSurface
 
 format:
-	@ruff format build  --config ruff.toml
+	@ruff format ableton-control-surface-core  --config ruff.toml
+	@ruff format ableton-control-surface-scripts  --config ruff.toml
 	@ruff format AbletonDocSurface
 
 fix-parse-errors:
 	@python fix_parse_errors.py
 
-install-deps:
-	@pip install -r requirements.txt
-
-restart: kill copy-doc-script launch
+restart: kill copy-doc-script-to-ableton launch-ableton
 
 upload-pip:
 	@cd ableton-control-surface-core && rm -rf dist && rm -rf src/ableton_control-surface_core.egg-info && python -m build && twine upload dist/*

@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/melodic_pattern.py
 # Compiled at: 2023-12-21 15:35:35
 # Size of source mod 2**32: 6097 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import NamedTuple, find_if, lazy_attribute, memoize
+from past.utils import old_div
 
 from . import consts
 from .matrix_maps import FEEDBACK_CHANNELS

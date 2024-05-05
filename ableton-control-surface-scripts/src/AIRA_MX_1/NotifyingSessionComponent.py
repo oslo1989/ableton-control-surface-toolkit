@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 4593 bytes
 from itertools import count
 
-from future.moves.itertools import zip_longest
-
 from _Framework.SessionComponent import SceneComponent, SessionComponent
 from _Framework.SubjectSlot import subject_slot, subject_slot_group
+from future.moves.itertools import zip_longest
 
 
 class SpecialSceneComponent(SceneComponent):
@@ -109,5 +108,5 @@ class NotifyingSessionComponent(SessionComponent):
             name = self._scenes[0].scene_name()
             if not name:
                 name = self._scene_offset + 1
-            self._show_msg_callback("Controlling Scene %s" % name)
+            self._show_msg_callback(f"Controlling Scene {name}")
             self._last_scene_offset = self._scene_offset

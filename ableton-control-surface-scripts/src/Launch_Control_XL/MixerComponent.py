@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launch_Control_XL/MixerComponent.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 4509 bytes
-from future.moves.itertools import zip_longest
-
 from _Framework.ChannelStripComponent import ChannelStripComponent as ChannelStripComponentBase
 from _Framework.Control import ButtonControl, control_list
 from _Framework.MixerComponent import MixerComponent as MixerComponentBase
+from future.moves.itertools import zip_longest
 
 
 class ChannelStripComponent(ChannelStripComponentBase):

@@ -5,12 +5,14 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/melodic_component.py
 # Compiled at: 2023-12-21 12:10:20
 # Size of source mod 2**32: 14270 bytes
-from future.moves.itertools import zip_longest
+import functools
+import operator
 
 from ableton.v2.base import find_if, forward_property, listenable_property, listens, listens_group, liveobj_valid
 from ableton.v2.control_surface.components import AccentComponent
 from ableton.v2.control_surface.elements import to_midi_value
 from ableton.v2.control_surface.mode import LayerMode
+from future.moves.itertools import zip_longest
 
 from . import consts
 from .consts import MessageBoxText
@@ -263,7 +265,9 @@ class MelodicComponent(MessengerModesComponent):
 
     @listenable_property
     def editing_note_regions(self):
-        return sum([note_editor.editing_note_regions for note_editor in self._note_editors], [])
+        return functools.reduce(
+            operator.iadd, [note_editor.editing_note_regions for note_editor in self._note_editors], []
+        )
 
     @listenable_property
     def row_start_times(self):

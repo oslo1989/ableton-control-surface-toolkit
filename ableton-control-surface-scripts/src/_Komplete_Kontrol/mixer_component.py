@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_Komplete_Kontrol/mixer_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2130 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.control_surface.components import MixerComponent as MixerComponentBase
+from future.moves.itertools import zip_longest
 
 
 class MixerComponent(MixerComponentBase):

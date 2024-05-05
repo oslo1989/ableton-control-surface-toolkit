@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Blackstar_Live_Logic/clip_util.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1885 bytes
-from past.utils import old_div
-
 from ableton.v2.base import liveobj_valid
+from past.utils import old_div
 
 
 def has_clip(slot):

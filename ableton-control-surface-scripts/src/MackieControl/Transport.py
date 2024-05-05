@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/MackieControl/Transport.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 25148 bytes
-from past.utils import old_div
-
 from ableton.v2.base import move_current_song_time
+from past.utils import old_div
 
 from .MackieControlComponent import *
 

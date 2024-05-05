@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/RemoteSL/EffectController.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 17861 bytes
-from past.utils import old_div
-
 import Live
 from _Generic.Devices import *
+from past.utils import old_div
 
 from .consts import *
 from .RemoteSLComponent import RemoteSLComponent

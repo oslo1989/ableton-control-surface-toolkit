@@ -9,8 +9,6 @@ import math
 from functools import partial
 from itertools import chain
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import (
     clamp,
@@ -32,6 +30,7 @@ from ableton.v2.control_surface.control import (
 )
 from ableton.v2.control_surface.elements import DisplayDataSource
 from ableton.v2.control_surface.mode import AddLayerMode, Mode, ModesComponent
+from past.utils import old_div
 
 from .consts import CHAR_ELLIPSIS, GRAPH_VOL
 

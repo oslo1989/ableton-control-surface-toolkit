@@ -7,8 +7,6 @@
 # Size of source mod 2**32: 16711 bytes
 from functools import partial
 
-from future.utils import iteritems
-
 import Live
 from _Framework import (
     ButtonElement,
@@ -21,6 +19,7 @@ from _Framework import (
 )
 from _Framework.InputControlElement import MIDI_CC_TYPE
 from _Framework.Util import NamedTuple
+from future.utils import iteritems
 
 from .SpecialMixerComponent import SpecialMixerComponent
 

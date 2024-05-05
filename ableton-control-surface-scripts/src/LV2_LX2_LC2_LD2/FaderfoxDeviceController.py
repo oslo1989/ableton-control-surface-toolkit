@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/LV2_LX2_LC2_LD2/FaderfoxDeviceController.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 16519 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import old_hasattr
+from past.utils import old_div
 
 from .consts import *
 from .Devices import *
@@ -27,11 +26,11 @@ class FaderfoxDeviceController(FaderfoxComponent):
 
     def realinit(self, parent):
         FaderfoxComponent.realinit(self, parent)
-        self.log("device controller %s" % parent)
+        self.log(f"device controller {parent}")
         self.device = None
         if old_hasattr(self.parent.song(), "appointed_device"):
             self.device = self.parent.song().appointed_device
-        self.log("device %s" % self.device)
+        self.log(f"device {self.device}")
         self.device_locked = False
         self.bank = 0
         self.show_bank = False
@@ -159,14 +158,14 @@ class FaderfoxDeviceController(FaderfoxComponent):
                         )
                         ParamMap.map_with_feedback(midi_map_handle, channel, ccs[encoder], parameter, mode2)
                     else:
-                        self.log("Could not find parameter %s" % param_bank[encoder])
+                        self.log(f"Could not find parameter {param_bank[encoder]}")
 
-        self.log("map device params %s" % self.device)
+        self.log(f"map device params {self.device}")
         if self.device:
             params = self.device.parameters
             param_bank = 0
             device_name = self.helper.device_name(self.device)
-            self.log("device name '%s'" % device_name)
+            self.log(f"device name '{device_name}'")
             if device_name in list(XY_DEVICE_DICT.keys()):
                 xys = XY_DEVICE_DICT[device_name]
                 if len(xys) > 0:
@@ -324,11 +323,11 @@ class FaderfoxDeviceController(FaderfoxComponent):
         self.parent.song().view.remove_detail_clip_listener(self.on_selected_clip)
 
     def on_device_selected(self):
-        self.log("selected device %s" % self.selected_track.view.selected_device)
+        self.log(f"selected device {self.selected_track.view.selected_device}")
         self.set_appointed_device(self.selected_track.view.selected_device)
 
     def on_track_selected(self):
         if self.parent.is_live_5():
-            self.log("add a listener to selected device on track %s" % self.parent.song().view.selected_track)
+            self.log(f"add a listener to selected device on track {self.parent.song().view.selected_track}")
             self.selected_track = self.parent.song().view.selected_track
         self.parent.request_rebuild_midi_map()

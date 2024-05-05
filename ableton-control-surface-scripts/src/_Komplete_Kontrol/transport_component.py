@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_Komplete_Kontrol/transport_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2540 bytes
-from past.utils import old_div
-
 from ableton.v2.base import listens, move_current_song_time
 from ableton.v2.control_surface.components import ToggleComponent
 from ableton.v2.control_surface.components import TransportComponent as TransportComponentBase
 from ableton.v2.control_surface.control import ButtonControl, EncoderControl
+from past.utils import old_div
 
 
 class TransportComponent(TransportComponentBase):

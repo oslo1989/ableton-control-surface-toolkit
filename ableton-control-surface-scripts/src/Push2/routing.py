@@ -219,7 +219,7 @@ class Router(EventObject):
         self.register_slot(
             MultiSlot(
                 subject=(self._song.view),
-                event_name_list=("selected_track", "available_%ss" % self._current_target_property),
+                event_name_list=("selected_track", f"available_{self._current_target_property}s"),
                 listener=(self._Router__on_routings_changed),
             ),
         )

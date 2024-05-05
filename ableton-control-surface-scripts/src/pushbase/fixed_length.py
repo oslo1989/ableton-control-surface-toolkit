@@ -7,8 +7,6 @@
 # Size of source mod 2**32: 9141 bytes
 from functools import partial
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import EventObject, listenable_property, listens, task
 from ableton.v2.control_surface import Component
@@ -19,6 +17,7 @@ from ableton.v2.control_surface.control import (
     ToggleButtonControl,
     control_list,
 )
+from past.utils import old_div
 
 from . import consts
 from .message_box_component import Messenger

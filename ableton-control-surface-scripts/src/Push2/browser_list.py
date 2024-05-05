@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 3854 bytes
 from itertools import islice
 
-from model.uniqueid import UniqueIdMixin
-
 import Live
 from ableton.v2.base import EventObject, clamp, listenable_property, nop
+from model.uniqueid import UniqueIdMixin
 
 
 class BrowserList(EventObject, UniqueIdMixin):

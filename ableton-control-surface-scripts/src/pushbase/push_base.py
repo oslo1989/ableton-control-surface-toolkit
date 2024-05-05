@@ -8,8 +8,6 @@
 from contextlib import contextmanager
 from functools import partial
 
-from past.utils import old_div
-
 from ableton.v2.base import NamedTuple, clamp, const, inject, listens, listens_group, liveobj_valid, nop
 from ableton.v2.control_surface import (
     BackgroundLayer,
@@ -40,6 +38,7 @@ from ableton.v2.control_surface.elements import (
     to_midi_value,
 )
 from ableton.v2.control_surface.mode import AddLayerMode, LayerMode, LazyEnablingMode, ModesComponent, ReenterBehaviour
+from past.utils import old_div
 
 from . import consts, sysex
 from .actions import (
@@ -335,7 +334,7 @@ class PushBase(ControlSurface):
         default_mode=None,
         alternative_mode=None,
     ):
-        base_component = getattr(self, "_%s_component" % mode)
+        base_component = getattr(self, f"_{mode}_component")
         base_layer = (
             Layer(
                 matrix=(self.elements.matrix.submatrix[:4, 4:8]),
@@ -347,8 +346,8 @@ class PushBase(ControlSurface):
             if add_touch_strip
             else Layer(matrix=(self.elements.matrix.submatrix[:4, 4:8]))
         )
-        sequencer = getattr(self, "_%s_step_sequencer" % mode)
-        velocity_levels = getattr(self, "_%s_velocity_levels" % mode)
+        sequencer = getattr(self, f"_{mode}_step_sequencer")
+        velocity_levels = getattr(self, f"_{mode}_velocity_levels")
         alternating_layouts = MessengerModesComponent(muted=True, is_enabled=False)
         alternating_layouts.add_mode(
             "sequencer_loop",
@@ -390,7 +389,7 @@ class PushBase(ControlSurface):
         default_mode=None,
         alternative_mode=None,
     ):
-        base_component = getattr(self, "_%s_component" % mode)
+        base_component = getattr(self, f"_{mode}_component")
         touch_strip_modes = (
             [LayerMode(self._pitch_mod_touch_strip, self._pitch_mod_touch_strip_layer)] if add_touch_strip else []
         )

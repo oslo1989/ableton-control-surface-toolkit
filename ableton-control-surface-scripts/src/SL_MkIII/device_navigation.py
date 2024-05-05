@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 5182 bytes
 from itertools import zip_longest
 
-from past.utils import old_div
-
 from ableton.v2.base import listens, listens_group
 from ableton.v2.control_surface.components import DeviceNavigationComponent
 from ableton.v2.control_surface.control import ColorSysexControl, control_list
+from past.utils import old_div
 
 from .control import BinaryControl, TextDisplayControl
 

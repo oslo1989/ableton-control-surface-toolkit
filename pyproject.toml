@@ -7,7 +7,7 @@ requires-python=">=3.7"
 
 [tool.ruff]
 extend = "ruff.toml"
-ignore = ["COM812"]
+ignore = ["ANN101"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

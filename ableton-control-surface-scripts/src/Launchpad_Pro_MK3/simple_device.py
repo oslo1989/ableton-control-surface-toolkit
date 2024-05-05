@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launchpad_Pro_MK3/simple_device.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1922 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import liveobj_valid
 from ableton.v2.control_surface.control import ControlList, SendValueControl
+from future.moves.itertools import zip_longest
 from novation.simple_device import SimpleDeviceParameterComponent as SimpleDeviceParameterComponentBase
 
 from .control import SendReceiveValueControl

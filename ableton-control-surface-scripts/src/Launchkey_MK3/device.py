@@ -5,14 +5,13 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launchkey_MK3/device.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3633 bytes
-from future.moves.itertools import zip_longest
-from past.builtins import unicode
-
 from _Generic.Devices import parameter_bank_names
 from ableton.v2.base import listens_group, liveobj_valid, task
 from ableton.v2.control_surface.control import control_list
+from future.moves.itertools import zip_longest
 from novation.simple_device import SimpleDeviceParameterComponent
 from novation.simple_device_navigation import SimpleDeviceNavigationComponent
+from past.builtins import unicode
 
 from .control import DisplayControl
 

@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_Framework/Proxy.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3335 bytes
-from future.utils import raise_
-
 from ableton.v2.base import old_hasattr
+from future.utils import raise_
 
 from .Util import BooleanContext
 
@@ -31,7 +30,7 @@ class ProxyBase:
                 if old_hasattr(interface, name):
                     return getattr(obj, name)
             return getattr(interface, name)
-        raise_(AttributeError, "Does not have attribute %s" % name)
+        raise_(AttributeError, f"Does not have attribute {name}")
         return None
 
     def __setattr__(self, name, value):

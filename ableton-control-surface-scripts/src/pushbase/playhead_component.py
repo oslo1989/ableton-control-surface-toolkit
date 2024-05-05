@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/playhead_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3406 bytes
-from past.utils import old_div
-
 from ableton.v2.base import listens, liveobj_valid
 from ableton.v2.control_surface import Component
+from past.utils import old_div
 
 
 class PlayheadComponent(Component):

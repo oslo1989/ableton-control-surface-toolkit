@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push/parameter_mapping_sensitivities.py
 # Compiled at: 2023-12-21 15:35:34
 # Size of source mod 2**32: 7626 bytes
-from past.utils import old_div
-
 from ableton.v2.base import liveobj_valid
 from ableton.v2.control_surface import is_parameter_quantized
+from past.utils import old_div
 
 DEFAULT_SENSITIVITY_KEY = "normal_sensitivity"
 FINE_GRAINED_SENSITIVITY_KEY = "fine_grained_sensitivity"

@@ -37,7 +37,7 @@ class Skin:
         try:
             return self._colors[key]
         except KeyError:
-            raise_(SkinColorMissingError, "Skin color missing: %s" % str(key))
+            raise_(SkinColorMissingError, f"Skin color missing: {key!s}")
 
     def iteritems(self):
         return iter(self._colors.items())

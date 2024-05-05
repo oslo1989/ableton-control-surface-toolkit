@@ -5,13 +5,12 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/device_parameter_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3330 bytes
-from future.moves.itertools import zip_longest
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import is_parameter_bipolar, listens_group
 from ableton.v2.control_surface.components import DisplayingDeviceParameterComponent as DeviceParameterComponentBase
 from ableton.v2.control_surface.elements import DisplayDataSource
+from future.moves.itertools import zip_longest
+from past.utils import old_div
 
 from . import consts
 
@@ -84,5 +83,5 @@ class DeviceParameterComponent(DeviceParameterComponentBase):
         s = "" if parameter is None else str(parameter)
         if parameter:
             if parameter.automation_state == AutomationState.overridden:
-                s = "[%s]" % s
+                s = f"[{s}]"
         return s

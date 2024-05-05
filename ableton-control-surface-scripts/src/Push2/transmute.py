@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push2/transmute.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3747 bytes
-from past.builtins import unicode
-
 from ableton.v2.base import EventObject
 from ableton.v2.control_surface import EnumWrappingParameter, IntegerParameter, LiveObjectDecorator
+from past.builtins import unicode
 
 from .device_decoration import DeviceSwitchOption
 

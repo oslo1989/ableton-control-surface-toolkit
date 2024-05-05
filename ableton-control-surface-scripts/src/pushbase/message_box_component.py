@@ -8,12 +8,11 @@
 import contextlib
 import re
 
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import const, dependency, forward_property, listenable_property, listens, nop
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.components import BackgroundComponent
 from ableton.v2.control_surface.elements import DisplayDataSource
+from future.moves.itertools import zip_longest
 
 from .consts import DISPLAY_LENGTH, MessageBoxText
 

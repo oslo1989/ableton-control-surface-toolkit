@@ -1,7 +1,7 @@
-select = ["E", "F", "B", "W", "I" ,"UP", "ANN", "BLE", "FBT", "A", "COM", "C4", "DTZ", "PIE", "Q", "RET", "SIM", "PL", "RUF"]
-extend-select = ["I"]
-fixable = ["ALL"]
-ignore = [
+lint.select = ["E", "F", "B", "W", "I" ,"UP", "ANN", "BLE", "FBT", "A", "COM", "C4", "DTZ", "PIE", "Q", "RET", "SIM", "PL", "RUF"]
+lint.extend-select = ["I"]
+lint.fixable = ["ALL"]
+lint.ignore = [
     "A001", "A002", "A003",
     "B007", "B012", "B018", "B020", "B023", "B008", "B904",
     "BLE001",
@@ -15,7 +15,7 @@ ignore = [
     "PLE0604",
     "RET505", "RET506", "RET507", "RET508",
     "RUF012",
-    "SIM102", "SIM117", "SIM114", "SIM115"
+    "SIM102", "SIM117", "SIM113", "SIM114", "SIM115"
 ]
 line-length = 120
 target-version = "py37"

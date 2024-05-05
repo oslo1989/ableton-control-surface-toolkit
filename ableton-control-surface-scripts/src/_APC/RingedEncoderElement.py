@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_APC/RingedEncoderElement.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3318 bytes
-from past.utils import old_div
-
 from _Framework import EncoderElement
+from past.utils import old_div
 
 RING_OFF_VALUE = 0
 RING_SIN_VALUE = 1

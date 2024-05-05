@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 6911 bytes
 from itertools import count
 
+from ableton.v2.base import old_hasattr
 from future.utils import iteritems, with_metaclass
 from past.builtins import long, unicode
-
-from ableton.v2.base import old_hasattr
 
 
 class ModelDeclarationException(Exception):

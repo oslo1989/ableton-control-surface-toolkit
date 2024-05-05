@@ -8,14 +8,13 @@
 import re
 from functools import partial
 
-from future.moves.itertools import zip_longest
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, find_if, listens, listens_group, memoize, nop, task
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl, ToggleButtonControl
 from ableton.v2.control_surface.elements import DisplayDataSource
+from future.moves.itertools import zip_longest
+from past.utils import old_div
 from pushbase import consts
 from pushbase.scrollable_list import DefaultItemFormatter, ListComponent
 

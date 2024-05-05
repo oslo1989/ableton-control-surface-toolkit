@@ -8,7 +8,6 @@
 from collections import OrderedDict
 
 from past.utils import old_div
-
 from pushbase.setting import EnumerableSetting, OnOffSetting
 
 from .pad_sensitivity import PadParameters

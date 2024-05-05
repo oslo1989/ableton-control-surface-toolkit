@@ -5,13 +5,12 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/SL_MkIII/channel_strip.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 7022 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, listens, liveobj_valid, old_round
 from ableton.v2.control_surface.components import ChannelStripComponent as ChannelStripComponentBase
 from ableton.v2.control_surface.control import ButtonControl, ColorSysexControl
 from ableton.v2.control_surface.elements import DisplayDataSource, SysexRGBColor
+from past.utils import old_div
 
 from .control import BinaryControl
 from .messenger import Messenger

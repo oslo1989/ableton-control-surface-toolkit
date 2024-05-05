@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launchpad/PreciseButtonSliderElement.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 7493 bytes
-from past.utils import old_div
-
 from _Framework import ButtonSliderElement
 from _Framework.InputControlElement import *
+from past.utils import old_div
 
 SLIDER_MODE_SINGLE = 0
 SLIDER_MODE_VOLUME = 1

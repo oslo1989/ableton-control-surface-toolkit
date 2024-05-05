@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/APC20/ShiftableZoomingComponent.py
 # Compiled at: 2023-11-21 10:21:17
 # Size of source mod 2**32: 3851 bytes
-from past.utils import old_div
-
 from _Framework.SessionZoomingComponent import DeprecatedSessionZoomingComponent
+from past.utils import old_div
 
 
 class ShiftableZoomingComponent(DeprecatedSessionZoomingComponent):

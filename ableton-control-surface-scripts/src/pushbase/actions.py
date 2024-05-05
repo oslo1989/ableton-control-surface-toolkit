@@ -7,14 +7,13 @@
 # Size of source mod 2**32: 18611 bytes
 from itertools import count
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import forward_property, listens, listens_group, liveobj_changed, liveobj_valid, old_hasattr
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.components import UndoRedoComponent as UndoRedoComponentBase
 from ableton.v2.control_surface.control import ButtonControl, control_list
 from ableton.v2.control_surface.elements import DisplayDataSource
+from past.utils import old_div
 
 from .action_with_options_component import ActionWithSettingsComponent
 from .clip_control_component import convert_beat_length_to_bars_beats_sixteenths

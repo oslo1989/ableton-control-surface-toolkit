@@ -8,11 +8,11 @@
 import contextlib
 from collections import namedtuple
 
+from ableton.v2.base import old_hasattr
 from future.utils import string_types
 
 from _MxDCore.ControlSurfaceWrapper import WrapperRegistry
 from _MxDCore.LomTypes import get_control_surfaces, is_control_surface
-from ableton.v2.base import old_hasattr
 
 RECEIVE_MIDI_TIMEOUT = 0.2
 

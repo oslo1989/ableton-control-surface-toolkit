@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 10482 bytes
 from itertools import repeat
 
-from past.utils import old_div
-
 from ableton.v2.control_surface.elements import Color, to_midi_value
+from past.utils import old_div
 
 
 class PushColor(Color):

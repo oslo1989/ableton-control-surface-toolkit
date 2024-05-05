@@ -196,7 +196,7 @@ class Push(PushBase):
 
     @listens("success")
     def _on_handshake_success(self):
-        logger.info("Handshake succeded with firmware version %.2f!" % self._handshake.firmware_version)
+        logger.info(f"Handshake succeded with firmware version {self._handshake.firmware_version:.2f}!")
         self.update()
         self._c_instance.set_firmware_version(self._handshake.firmware_version)
         if self._handshake.has_version_requirements(1, 16):

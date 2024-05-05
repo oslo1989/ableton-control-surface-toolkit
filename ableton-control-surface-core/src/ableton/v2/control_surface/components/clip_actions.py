@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/ableton/v2/control_surface/components/clip_actions.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3021 bytes
-from control_surface.control import ButtonControl
-
 import Live
+from control_surface.control import ButtonControl
 
 from ...base import duplicate_clip_loop, listens, liveobj_valid
 from ...control_surface import Component

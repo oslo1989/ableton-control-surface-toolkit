@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 5893 bytes
 from math import ceil
 
-from past.utils import old_div
-
 from ableton.v2.base import clamp, listens
 from ableton.v2.control_surface import Component
+from past.utils import old_div
 
 from .touch_strip_element import (
     MAX_PITCHBEND,

@@ -99,7 +99,7 @@ def memoize(function):
 def mixin(*args):
     if len(args) == 1:
         return args[0]
-    name = "Mixin_%s" % "_".join(cls.__name__ for cls in args)
+    name = "Mixin_{}".format("_".join(cls.__name__ for cls in args))
     return type(str(name), args, {})
 
 

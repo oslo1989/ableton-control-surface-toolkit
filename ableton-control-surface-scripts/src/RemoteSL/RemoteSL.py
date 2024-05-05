@@ -131,7 +131,7 @@ class RemoteSL:
                 if note in mx_notes:
                     self._RemoteSL__mixer_controller.receive_midi_note(note, velocity)
                 else:
-                    print("unknown MIDI message %s" % str(midi_bytes))
+                    print(f"unknown MIDI message {midi_bytes!s}")
         else:
             if midi_bytes[0] & 240 == CC_STATUS:
                 midi_bytes[0] & 15
@@ -143,7 +143,7 @@ class RemoteSL:
                     if cc_no in mx_ccs:
                         self._RemoteSL__mixer_controller.receive_midi_cc(cc_no, cc_value)
                     else:
-                        print("unknown MIDI message %s" % str(midi_bytes))
+                        print(f"unknown MIDI message {midi_bytes!s}")
             else:
                 if midi_bytes[0] == 240:
                     if len(midi_bytes) == 13:
@@ -160,4 +160,4 @@ class RemoteSL:
 
                                 self.request_rebuild_midi_map()
                 else:
-                    print("unknown MIDI message %s" % str(midi_bytes))
+                    print(f"unknown MIDI message {midi_bytes!s}")

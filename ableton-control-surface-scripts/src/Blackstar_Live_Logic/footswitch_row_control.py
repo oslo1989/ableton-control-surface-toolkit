@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 4067 bytes
 import weakref
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import const, depends, listens, mixin
 from ableton.v2.control_surface.control import ButtonControl, ControlList
+from past.utils import old_div
 
 PULSE_COLORS = {"Beat_Pulse", "Subdivision_Pulse"}
 PULSE_LENGTH_FRACTION = 0.2

@@ -7,12 +7,11 @@
 # Size of source mod 2**32: 12346 bytes
 from operator import itemgetter
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import listens, liveobj_valid, task
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import InputControl, SendValueControl
+from past.utils import old_div
 
 
 class MessageType:

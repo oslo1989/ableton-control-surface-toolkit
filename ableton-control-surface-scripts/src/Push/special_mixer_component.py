@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push/special_mixer_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 7053 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import listens
 from ableton.v2.control_surface import components
 from ableton.v2.control_surface.elements import DisplayDataSource
+from future.moves.itertools import zip_longest
 
 from .special_chan_strip_component import SpecialChanStripComponent
 

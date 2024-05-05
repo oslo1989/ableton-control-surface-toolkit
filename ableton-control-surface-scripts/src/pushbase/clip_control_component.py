@@ -5,14 +5,13 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/clip_control_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 29787 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import EventObject, clamp, forward_property, listenable_property, listens, liveobj_valid, nop
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl, EncoderControl, StepEncoderControl, control_list
 from ableton.v2.control_surface.elements import DisplayDataSource
 from ableton.v2.control_surface.mode import ModesComponent
+from past.utils import old_div
 
 ONE_THIRTYSECOND_IN_BEATS = 0.125
 ONE_SIXTEENTH_IN_BEATS = 0.25
@@ -553,9 +552,9 @@ class AudioClipSettingsControllerComponent(Component):
 
     def _update_encoder_enabled_state(self):
         enabled = liveobj_valid(self.clip)
-        self.warp_mode_encoder.enabled = (
-            self.transpose_encoder.enabled
-        ) = self.detune_encoder.enabled = self.gain_encoder.enabled = enabled
+        self.warp_mode_encoder.enabled = self.transpose_encoder.enabled = self.detune_encoder.enabled = (
+            self.gain_encoder.enabled
+        ) = enabled
 
     @warp_mode_encoder.value
     def warp_mode_encoder(self, value, encoder):

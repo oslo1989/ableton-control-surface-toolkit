@@ -42,11 +42,7 @@ class ParameterSlotDescription(EventObject):
             result = True
             for subcond in condition[CONDITIONS_LIST_NAME_KEY]:
                 result = eval(
-                    "{} {} {}".format(
-                        result,
-                        subcond[OPERAND_NAME_KEY],
-                        subcond[PREDICATE_KEY](find_parameter(subcond[CONDITION_NAME_KEY], self._parameter_host)),
-                    ),
+                    f"{result} {subcond[OPERAND_NAME_KEY]} {subcond[PREDICATE_KEY](find_parameter(subcond[CONDITION_NAME_KEY], self._parameter_host))}",
                 )
                 if not result:
                     continue

@@ -21,7 +21,7 @@ def profile(fn):
         def wrapper(self, *a, **k):
             if PROFILER:
                 return PROFILER.runcall(partial(fn, self, *a, **k))
-            print("Can not profile (%s), it is probably reloaded" % fn.__name__)
+            print(f"Can not profile ({fn.__name__}), it is probably reloaded")
             return fn(*a, **k)
 
         return wrapper

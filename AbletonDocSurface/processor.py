@@ -128,9 +128,8 @@ def process_boost_enum(member: tuple[str, Any], path: str, doc: str | None = Non
     new_doc = f"Class that represent an enumeration of values for {member[0]}"
     doc = new_doc + f"\n{doc}" if doc else new_doc
     names = member[1].names
-    idx = 0
     properties: list[Property] = []
-    for v in names:
+    for idx, v in enumerate(names):
         properties.append(
             Property(
                 doc_string=None,
@@ -140,7 +139,6 @@ def process_boost_enum(member: tuple[str, Any], path: str, doc: str | None = Non
                 property_type="int",
             ),
         )
-        idx += 1
     return Klazz(
         name=member[0],
         doc_string=doc,

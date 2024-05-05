@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 3007 bytes
 import math
 
-from past.utils import old_div
-
 from ableton.v2.control_surface import NotifyingControlElement
 from ableton.v2.control_surface.control import Control
+from past.utils import old_div
 
 MAX_DISPLAY_DIGITS = 3
 NUM_DIGITS_TO_BYTE = {3: (7,), 2: (6,), 1: (4,)}

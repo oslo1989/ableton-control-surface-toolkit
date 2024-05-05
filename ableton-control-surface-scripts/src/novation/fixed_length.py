@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/novation/fixed_length.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 4245 bytes
-from past.utils import old_div
-
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl, control_list
+from past.utils import old_div
 
 NUM_LENGTHS = 8
 

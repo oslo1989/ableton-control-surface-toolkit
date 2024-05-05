@@ -178,7 +178,7 @@ class LaunchControlXL(IdentifiableControlSurface):
                 send_name2 = chr(ord("A") + send_index + 1)
                 self.show_message(f"Controlling Send {send_name1} and {send_name2}")
             else:
-                self.show_message("Controlling Send %s" % send_name1)
+                self.show_message(f"Controlling Send {send_name1}")
 
     def _show_controlled_tracks_message(self, session):
         start = session.track_offset() + 1

@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Axiom_AIR_25_49_61/Axiom_AIR_25_49_61.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 35215 bytes
-from past.utils import old_div
-
 import Live
 from _Framework import ButtonElement, ControlSurface, DisplayDataSource, PhysicalDisplayElement, TransportComponent
 from _Framework.InputControlElement import MIDI_CC_TYPE, MIDI_NOTE_TYPE, InputControlElement
 from Live import MidiMap
+from past.utils import old_div
 
 from .BestBankDeviceComponent import BestBankDeviceComponent
 from .ConfigurableButtonElement import ConfigurableButtonElement

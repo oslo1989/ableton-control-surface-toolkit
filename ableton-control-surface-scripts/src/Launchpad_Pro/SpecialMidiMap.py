@@ -86,8 +86,8 @@ class SpecialMidiMap(MidiMap):
 
             elements.append(element_row)
 
-        self["%s_Raw" % name] = elements
-        self["%s_Ids" % name] = id_dict
+        self[f"{name}_Raw"] = elements
+        self[f"{name}_Ids"] = id_dict
         self[name] = ButtonMatrixElement(rows=elements, name=name)
 
     def add_modifier_button(

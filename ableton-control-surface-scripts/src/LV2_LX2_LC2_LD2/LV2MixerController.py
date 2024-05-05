@@ -120,7 +120,7 @@ class LV2MixerController(FaderfoxMixerController):
                 elif attr == "current_monitoring_state":
                     self.log(f"current monitoring state of {track} : {status}")
                     status = status != 2
-                    self.log("status is now %s" % track.monitoring_states.OFF)
+                    self.log(f"status is now {track.monitoring_states.OFF}")
             if self.status_cache[attr][idx] != status:
                 self.send_track_status_midi(status, notes[idx])
                 self.status_cache[attr][idx] = status

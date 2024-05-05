@@ -62,7 +62,7 @@ class DeviceComponent(ControlSurfaceComponent, Subject):
 
         def make_property_slot(name, alias=None):
             alias = alias or name
-            return self.register_slot(None, getattr(self, "_on_%s_changed" % alias), name)
+            return self.register_slot(None, getattr(self, f"_on_{alias}_changed"), name)
 
         self._on_off_property_slot = make_property_slot("value", alias="device_on_off")
         self._name_property_slot = make_property_slot("name", alias="device_name")
@@ -70,7 +70,7 @@ class DeviceComponent(ControlSurfaceComponent, Subject):
         self._device_bank_property_slot = make_property_slot("device_bank")
 
         def make_button_slot(name):
-            return self.register_slot(None, getattr(self, "_%s_value" % name), "value")
+            return self.register_slot(None, getattr(self, f"_{name}_value"), "value")
 
         self._bank_up_button_slot = make_button_slot("bank_up")
         self._bank_down_button_slot = make_button_slot("bank_down")

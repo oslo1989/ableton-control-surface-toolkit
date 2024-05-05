@@ -265,7 +265,7 @@ _control_matrix_classes = {}
 def control_list(control_type, *a, **k):
     if control_type == RadioButtonControl:
         return RadioButtonGroup(*a, **k)
-    c = _control_list_classes.get(control_type, None)
+    c = _control_list_classes.get(control_type)
     if not c:
         c = mixin(ControlList, control_type)
         _control_list_classes[control_type] = c
@@ -273,7 +273,7 @@ def control_list(control_type, *a, **k):
 
 
 def control_matrix(control_type, *a, **k):
-    m = _control_matrix_classes.get(control_type, None)
+    m = _control_matrix_classes.get(control_type)
     if not m:
         m = mixin(MatrixControl, control_type)
         _control_matrix_classes[control_type] = m

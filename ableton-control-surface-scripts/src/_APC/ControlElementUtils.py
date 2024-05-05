@@ -6,9 +6,10 @@
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1509 bytes
 import Live
-from _APC import RingedEncoderElement
 from _Framework import ButtonElement, EncoderElement, SliderElement
 from _Framework.InputControlElement import MIDI_CC_TYPE, MIDI_NOTE_TYPE
+
+from _APC import RingedEncoderElement
 
 MapMode = Live.MidiMap.MapMode
 
@@ -30,7 +31,7 @@ def make_knob(channel, identifier, *a, **k):
 
 
 def make_ring_encoder(encoder_identifer, button_identifier, name="", *a, **k):
-    button_name = "%s_Ring_Mode_Button" % name
+    button_name = f"{name}_Ring_Mode_Button"
     button = ButtonElement(False, MIDI_CC_TYPE, 0, button_identifier, name=button_name)
     encoder = RingedEncoderElement(MIDI_CC_TYPE, 0, encoder_identifer, (MapMode.absolute), *a, name=name, **k)
     encoder.set_ring_mode_button(button)

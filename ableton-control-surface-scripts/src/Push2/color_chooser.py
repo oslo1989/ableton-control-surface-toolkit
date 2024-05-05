@@ -54,7 +54,7 @@ class ColorChooserComponent(Component, Messenger):
                 self._render_color_palette(translate_color_index(obj.color_index))
                 self.set_enabled(True)
                 self._notification_ref = self.show_notification(
-                    ("Select a color for: %s" % obj.name),
+                    (f"Select a color for: {obj.name}"),
                     notification_time=(-1),
                 )
 
@@ -64,7 +64,7 @@ class ColorChooserComponent(Component, Messenger):
             if button.color_index is None:
                 if old_hasattr(self.object, "is_auto_colored"):
                     self.object.is_auto_colored = True
-                    self.show_notification("Color automatically enabled for: %s" % self.object.name)
+                    self.show_notification(f"Color automatically enabled for: {self.object.name}")
             else:
                 self.object.color_index = inverse_translate_color_index(button.color_index)
             self.object = None

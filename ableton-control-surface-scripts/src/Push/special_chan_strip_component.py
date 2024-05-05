@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Push/special_chan_strip_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 13437 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import flatten, listens, listens_group, liveobj_valid, old_hasattr, task
 from ableton.v2.control_surface import ParameterSlot, components
 from ableton.v2.control_surface.elements import DisplayDataSource
+from past.utils import old_div
 from pushbase import consts
 from pushbase.consts import MessageBoxText
 from pushbase.message_box_component import Messenger

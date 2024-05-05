@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/ableton/v2/control_surface/elements/button.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 4323 bytes
-from past.builtins import long
-
 import Live
+from past.builtins import long
 
 from ...base import BooleanContext, const, has_event, in_range, listens, old_hasattr
 from ..input_control_element import InputControlElement

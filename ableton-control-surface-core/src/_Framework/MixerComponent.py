@@ -60,7 +60,7 @@ class MixerComponent(CompoundComponent):
         self._on_return_tracks_changed()
 
         def make_button_slot(name):
-            return self.register_slot(None, getattr(self, "_%s_value" % name), "value")
+            return self.register_slot(None, getattr(self, f"_{name}_value"), "value")
 
         self._bank_up_button_slot = make_button_slot("bank_up")
         self._bank_down_button_slot = make_button_slot("bank_down")

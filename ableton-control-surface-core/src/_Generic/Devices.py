@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 42603 bytes
 from functools import partial
 
-from past.utils import old_div
-
 from _Framework.Util import group
+from past.utils import old_div
 
 RCK_BANK1 = ("Macro 1", "Macro 2", "Macro 3", "Macro 4", "Macro 5", "Macro 6", "Macro 7", "Macro 8")
 RCK_BANK2 = ("Macro 9", "Macro 10", "Macro 11", "Macro 12", "Macro 13", "Macro 14", "Macro 15", "Macro 16")

@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Axiom_AIR_25_49_61/NumericalDisplayElement.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2183 bytes
-from past.utils import old_div
-
 from _Framework import PhysicalDisplayElement
+from past.utils import old_div
 
 from .NumericalDisplaySegment import NumericalDisplaySegment
 

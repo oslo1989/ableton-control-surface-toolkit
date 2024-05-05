@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 52363 bytes
 from itertools import chain
 
-from past.utils import old_div
-
 from _Generic.Devices import *
+from past.utils import old_div
 
 from .MackieControlComponent import *
 

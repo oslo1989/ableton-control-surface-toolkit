@@ -192,7 +192,7 @@ class CompressorInputRouterMixin:
         self._registered_listeners = [
             self.register_slot(
                 subject=(self._get_routing_host()),
-                event_name=("available_%ss" % self._current_target_property),
+                event_name=(f"available_{self._current_target_property}s"),
                 listener=(self.notify_routing_targets),
             ),
             self.register_slot(

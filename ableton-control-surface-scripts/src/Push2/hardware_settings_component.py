@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 4237 bytes
 import weakref
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, listens, task
 from ableton.v2.control_surface import Component
+from past.utils import old_div
 
 LED_FADE_IN_DELAY = 0.3
 LED_FADE_IN_TIME = 200

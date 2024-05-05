@@ -89,7 +89,7 @@ class ChannelStripComponent(ChannelStripComponentBase):
             volume_string = str(self._track.mixer_device.volume)
             found_string = "".join(volume_pattern.findall(volume_string))
             if found_string:
-                volume_string = "%s dB" % round(float(found_string), 1)
+                volume_string = f"{round(float(found_string), 1)} dB"
         self._track_volume_data_source.set_display_string(volume_string)
 
     def _update_track_panning_data_source(self):

@@ -7,9 +7,6 @@
 # Size of source mod 2**32: 7759 bytes
 from itertools import chain
 
-from future.moves.itertools import zip_longest
-from past.utils import old_div
-
 from ableton.v2.base import clamp, is_parameter_bipolar, listens, liveobj_valid
 from ableton.v2.control_surface.components import DisplayingDeviceParameterComponent as DeviceParameterComponentBase
 from ableton.v2.control_surface.control import (
@@ -20,6 +17,8 @@ from ableton.v2.control_surface.control import (
     is_internal_parameter,
 )
 from ableton.v2.control_surface.elements import DisplayDataSource
+from future.moves.itertools import zip_longest
+from past.utils import old_div
 
 from .control import SendingMappedAbsoluteControl, SendingMappedSensitivitySettingControl
 from .elements import NUM_PARAM_CONTROLS

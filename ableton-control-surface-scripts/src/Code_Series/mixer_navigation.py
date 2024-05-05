@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Code_Series/mixer_navigation.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1319 bytes
-from past.utils import old_div
-
 from ableton.v2.control_surface.components import SessionNavigationComponent, SessionRingScroller
+from past.utils import old_div
 
 
 class WrappingSessionRingTrackPager(SessionRingScroller):

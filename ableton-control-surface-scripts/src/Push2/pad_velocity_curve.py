@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 7495 bytes
 import math
 
-from past.utils import old_div
-
 from ableton.v2.base import SerializableListenableProperties, chunks, clamp, listenable_property, task
 from ableton.v2.control_surface import Component
+from past.utils import old_div
 
 NUM_VELOCITY_CURVE_ENTRIES = 128
 LAST_INDEX_FOR_DISPLAY = 58

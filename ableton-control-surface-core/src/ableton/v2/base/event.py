@@ -362,7 +362,7 @@ class _managed_listenable_property(listenable_property_base):
 
     def set_property_name(self, property_name):
         self._property_name = property_name
-        self._member_name = "__listenable_property_%s" % property_name
+        self._member_name = f"__listenable_property_{property_name}"
 
     def _get_value(self, obj):
         return getattr(obj, self._member_name, self._default_value)
@@ -373,7 +373,7 @@ class _managed_listenable_property(listenable_property_base):
     def __set__(self, obj, value):
         if value != self._get_value(obj):
             setattr(obj, self._member_name, value)
-            getattr(obj, "notify_%s" % self._property_name)(value)
+            getattr(obj, f"notify_{self._property_name}")(value)
 
 
 class SerializableListenablePropertiesMeta(EventObjectMeta):

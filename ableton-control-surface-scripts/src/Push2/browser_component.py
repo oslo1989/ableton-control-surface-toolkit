@@ -8,8 +8,6 @@
 from contextlib import contextmanager
 from math import ceil
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import (
     BooleanContext,
@@ -25,6 +23,7 @@ from ableton.v2.base import (
 )
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl, StepEncoderControl, ToggleButtonControl, control_list
+from past.utils import old_div
 from pushbase.browser_util import filter_type_for_hotswap_target, get_selection_for_new_device
 from pushbase.consts import MessageBoxText
 from pushbase.message_box_component import Messenger
@@ -570,7 +569,7 @@ class BrowserComponent(Component, Messenger):
         self._commit_model_changes()
 
     def _make_notification_text(self, browser_item):
-        return "Loading %s" % browser_item.name
+        return f"Loading {browser_item.name}"
 
     def _load_item(self, item):
         self._show_load_notification(item)

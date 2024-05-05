@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 2309 bytes
 from functools import partial
 
-from future.moves.itertools import zip_longest
-
 from ableton.v2.control_surface.components import MixerComponent as MixerComponentBase
+from future.moves.itertools import zip_longest
 
 
 class MixerComponent(MixerComponentBase):

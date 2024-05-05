@@ -5,13 +5,12 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/APC40_MkII/MixerComponent.py
 # Compiled at: 2023-11-21 10:21:17
 # Size of source mod 2**32: 3951 bytes
-from future.moves.itertools import zip_longest
-
 from _APC.MixerComponent import ChanStripComponent as ChannelStripComponentBase
 from _APC.MixerComponent import MixerComponent as MixerComponentBase
 from _Framework.Control import RadioButtonControl, control_list
 from _Framework.Dependency import depends
 from _Framework.Util import nop
+from future.moves.itertools import zip_longest
 
 
 class ChannelStripComponent(ChannelStripComponentBase):
@@ -71,7 +70,7 @@ class MixerComponent(MixerComponentBase):
     def _show_controlled_sends_message(self):
         if self._send_index is not None:
             send_name = chr(ord("A") + self._send_index)
-            self._show_message("Controlling Send %s" % send_name)
+            self._show_message(f"Controlling Send {send_name}")
 
     def set_pan_controls(self, controls):
         super().set_pan_controls(controls)

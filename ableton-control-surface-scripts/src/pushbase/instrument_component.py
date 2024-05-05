@@ -7,12 +7,11 @@
 # Size of source mod 2**32: 23789 bytes
 from contextlib import contextmanager
 
-from past.utils import old_div
-
 from ableton.v2.base import EventObject, find_if, index_if, listenable_property, listens, liveobj_valid, task
 from ableton.v2.control_surface import defaults
 from ableton.v2.control_surface.components import PlayableComponent, Slideable, SlideComponent
 from ableton.v2.control_surface.control import ButtonControl, PlayableControl, control_matrix
+from past.utils import old_div
 
 from . import consts
 from .melodic_pattern import SCALES, MelodicPattern, TuningSystemPattern, pitch_index_to_string
@@ -375,10 +374,7 @@ class InstrumentComponent(PlayableComponent, Slideable, Messenger):
         if self.is_enabled():
             if self.show_notifications:
                 self.show_notification(
-                    "Play {start_note} to {end_note}".format(
-                        start_note=(pitch_index_to_string(self.pattern.note(0, 0).index)),
-                        end_note=(pitch_index_to_string(self.pattern.note(self.width - 1, self.height - 1).index)),
-                    ),
+                    f"Play {pitch_index_to_string(self.pattern.note(0, 0).index)} to {pitch_index_to_string(self.pattern.note(self.width - 1, self.height - 1).index)}",
                 )
 
     def _update_scale(self):

@@ -9,13 +9,12 @@ from contextlib import contextmanager
 from functools import partial
 from math import ceil
 
-from future.moves.itertools import zip_longest
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import NamedTuple, clamp, depends, listens, listens_group, liveobj_valid
 from ableton.v2.control_surface.control import ButtonControl, MappedSensitivitySettingControl, control_list
 from ableton.v2.control_surface.mode import ModesComponent
+from future.moves.itertools import zip_longest
+from past.utils import old_div
 from pushbase.internal_parameter import ConstantParameter
 from pushbase.mixer_utils import has_pan_mode, is_set_to_split_stereo
 from pushbase.song_utils import find_parent_track

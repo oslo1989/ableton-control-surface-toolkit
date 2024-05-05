@@ -8,11 +8,10 @@
 from functools import partial
 from math import ceil, floor
 
+import Live
 from base.collection import IndexedDict
 from past.builtins import unicode
 from past.utils import old_div
-
-import Live
 
 from ..base import EventObject, clamp, listenable_property, listens, liveobj_valid, sign
 from .decoration import LiveObjectDecorator

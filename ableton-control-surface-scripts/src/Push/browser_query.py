@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 4540 bytes
 from functools import partial
 
-from future.utils import string_types
-
 from ableton.v2.base import const, find_if, first
+from future.utils import string_types
 
 from .browser_model import VirtualBrowserItem
 

@@ -48,7 +48,7 @@ class Skin(EventObject):
         try:
             return self._colors[key]
         except KeyError:
-            raise SkinColorMissingError("Skin color missing: %s" % str(key))
+            raise SkinColorMissingError(f"Skin color missing: {key!s}")
 
     def iteritems(self):
         return iteritems(self._colors)

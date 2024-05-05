@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/value_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 9563 bytes
-from past.utils import old_div
-
 from ableton.v2.base import listenable_property, listens
 from ableton.v2.control_surface import Component, ParameterSlot
 from ableton.v2.control_surface.control import ButtonControl, EncoderControl
 from ableton.v2.control_surface.elements import DisplayDataSource
+from past.utils import old_div
 
 from . import consts
 from .device_parameter_component import convert_parameter_value_to_graphic

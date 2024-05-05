@@ -7,12 +7,11 @@
 # Size of source mod 2**32: 6653 bytes
 from functools import partial
 
-from future.moves.itertools import zip_longest
-
 from _Framework import ChannelStripComponent, MixerComponent
 from _Framework.Control import ControlList, RadioButtonControl, RadioButtonGroup
 from _Framework.Dependency import depends
 from _Framework.Util import clamp
+from future.moves.itertools import zip_longest
 
 from .consts import (
     FADER_LAYOUT_SYSEX_BYTE,

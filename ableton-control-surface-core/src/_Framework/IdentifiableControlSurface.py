@@ -40,10 +40,7 @@ class IdentifiableControlSurface(ControlSurface):
                     self._identity_response_pending = False
             else:
                 self.log_message(
-                    "MIDI device responded with wrong product id ({} != {}).".format(
-                        str(self._product_id_bytes),
-                        str(product_id_bytes),
-                    ),
+                    f"MIDI device responded with wrong product id ({self._product_id_bytes!s} != {product_id_bytes!s}).",
                 )
         else:
             super().handle_sysex(midi_bytes)

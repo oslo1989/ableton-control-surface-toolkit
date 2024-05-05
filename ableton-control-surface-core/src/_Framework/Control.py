@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 34364 bytes
 from functools import partial
 
+from ableton.v2.base import old_hasattr
 from future.moves.itertools import zip_longest
 from past.utils import old_div
-
-from ableton.v2.base import old_hasattr
 
 from . import Task
 from .Defaults import MOMENTARY_DELAY
@@ -830,7 +829,7 @@ _control_matrix_classes = {}
 def control_list(control_type, *a, **k):
     if control_type == RadioButtonControl:
         return RadioButtonGroup(*a, **k)
-    c = _control_list_classes.get(control_type, None)
+    c = _control_list_classes.get(control_type)
     if not c:
         c = mixin(ControlList, control_type)
         c.State = mixin(ControlList.State, control_type.State)
@@ -839,7 +838,7 @@ def control_list(control_type, *a, **k):
 
 
 def control_matrix(control_type, *a, **k):
-    m = _control_matrix_classes.get(control_type, None)
+    m = _control_matrix_classes.get(control_type)
     if not m:
         m = mixin(MatrixControl, control_type)
         m.State = mixin(MatrixControl.State, control_type.State)

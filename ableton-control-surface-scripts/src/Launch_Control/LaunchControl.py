@@ -264,7 +264,7 @@ class LaunchControl(ControlSurface):
             send_name2 = chr(ord("A") + send_index + 1)
             self.show_message(f"Controlling Send {send_name1} and {send_name2}")
         else:
-            self.show_message("Controlling Send %s" % send_name1)
+            self.show_message(f"Controlling Send {send_name1}")
 
     def handle_sysex(self, midi_bytes):
         super().handle_sysex(midi_bytes)

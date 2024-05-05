@@ -22,7 +22,7 @@ class DeviceBankRegistry(EventObject):
 
     def set_device_bank(self, device, bank):
         key = self._find_device_bank_key(device) or device
-        old = self._device_bank_registry[key] if key in self._device_bank_registry else 0
+        old = self._device_bank_registry.get(key, 0)
         if old != bank:
             self._device_bank_registry[key] = bank
             self.notify_device_bank(device, bank)

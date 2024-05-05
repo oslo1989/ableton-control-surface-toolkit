@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 21077 bytes
 from functools import partial
 
-from past.utils import old_div
-
 from ableton.v2.base import depends, find_if, listenable_property, listens, liveobj_valid
 from ableton.v2.control_surface import EnumWrappingParameter, NotifyingList, get_parameter_by_name
 from ableton.v2.control_surface import SimplerDeviceDecorator as SimplerDeviceDecoratorBase
+from past.utils import old_div
 from pushbase.message_box_component import Messenger
 
 from .device_component import (
@@ -372,7 +371,7 @@ class SimplerDeviceComponent(DeviceComponentWithTrackColorViewData):
 
     def _update_real_time_channel(self, channel_name):
         if liveobj_valid(self._decorated_device):
-            rt_data = getattr(self, "_%s_real_time_data" % channel_name)
+            rt_data = getattr(self, f"_{channel_name}_real_time_data")
             setattr(self._decorated_device, channel_name + "_real_time_channel_id", rt_data.channel_id)
 
     @property

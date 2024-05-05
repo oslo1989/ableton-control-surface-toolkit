@@ -13,9 +13,8 @@ from functools import partial
 from itertools import chain
 from pickle import dumps, loads
 
-from future.utils import iteritems, itervalues
-
 import Live
+from future.utils import iteritems, itervalues
 
 from ..base import (
     BooleanContext,

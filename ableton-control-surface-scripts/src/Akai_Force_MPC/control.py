@@ -5,8 +5,6 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Akai_Force_MPC/control.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2819 bytes
-from past.utils import old_div
-
 from ableton.v2.base import clamp, listens, liveobj_valid
 from ableton.v2.control_surface.control import (
     InputControl,
@@ -15,6 +13,7 @@ from ableton.v2.control_surface.control import (
     SendValueMixin,
     is_internal_parameter,
 )
+from past.utils import old_div
 
 
 class SendReceiveValueControl(InputControl):

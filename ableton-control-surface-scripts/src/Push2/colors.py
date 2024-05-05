@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 16832 bytes
 from colorsys import hsv_to_rgb, rgb_to_hsv
 
-from past.utils import old_div
-
 import MidiRemoteScript
 from ableton.v2.base import depends, listens, liveobj_valid, nop, old_round
 from ableton.v2.control_surface.elements.color import DynamicColorBase, DynamicColorFactory
+from past.utils import old_div
 from pushbase.colors import Blink, FallbackColor, Pulse, PushColor, TransparentColor
 
 from .device_util import find_chain_or_track

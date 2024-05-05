@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 46117 bytes
 from itertools import chain
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import move_current_song_time
+from past.utils import old_div
 
 from .consts import *
 
@@ -646,7 +645,7 @@ class Tranzport:
                 + self._Tranzport__translate_string(str("%02d." % beat_time.beats))
                 + self._Tranzport__translate_string(str("%02d  " % beat_time.ticks))
             )
-        tempo_str = self._Tranzport__translate_string("%3.2fbpm" % self.song().tempo)
+        tempo_str = self._Tranzport__translate_string(f"{self.song().tempo:3.2f}bpm")
         if len(tempo_str) == 8:
             tempo_str = (32, *tempo_str)
         self._Tranzport__display_line_two = position_str + tempo_str

@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/ableton/v2/control_surface/decoration.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 13913 bytes
-from future.utils import iteritems
-
 import Live
+from future.utils import iteritems
 from Push2.device_options import DeviceOnOffOption, DeviceSwitchOption
 
 from ..base import (

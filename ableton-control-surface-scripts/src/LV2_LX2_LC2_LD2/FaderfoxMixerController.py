@@ -64,7 +64,7 @@ class FaderfoxMixerController(FaderfoxComponent):
         if status == NOTEOFF_STATUS:
             return
         if channel == CHANNEL_SETUP2:
-            self.log("received note %s" % note_no)
+            self.log(f"received note {note_no}")
         if channel == CHANNEL_SETUP2:
             if note_no in TRACK_SELECT_NOTES:
                 idx = note_no - TRACK_SELECT_NOTES[0]
@@ -148,7 +148,7 @@ class FaderfoxMixerController(FaderfoxComponent):
                 self.lv1_track_idx = note_no
                 self.parent.send_midi((175, 16, self.helper.selected_track_idx()))
                 if self.parent.is_live_5():
-                    self.log("send track note %s" % TRACK_SELECT_NOTES[self.helper.selected_track_idx()])
+                    self.log(f"send track note {TRACK_SELECT_NOTES[self.helper.selected_track_idx()]}")
                     self.parent.send_midi(
                         (NOTEON_STATUS + CHANNEL_SETUP2, TRACK_SELECT_NOTES[self.helper.selected_track_idx()], 64),
                     )

@@ -10,12 +10,11 @@ import json
 import logging
 from functools import partial, reduce, wraps
 
-from future.utils import string_types
-
 import _Framework
 import Live.Base
 from _Framework import Disconnectable
 from ableton.v2.base import old_hasattr
+from future.utils import string_types
 
 from .LomTypes import (
     CONTROL_SURFACES,
@@ -470,11 +469,11 @@ class MxDCore:
         current_object = self._get_current_lom_object(device_id, object_id)
         object_info = "No object"
         if current_object is not None:
-            object_info = "id %s\n" % str(self._get_lom_id_by_lom_object(current_object))
+            object_info = f"id {self._get_lom_id_by_lom_object(current_object)!s}\n"
             current_object = self._disambiguate_object(current_object)
             lom_info = LomInformation(current_object, self.epii_version)
-            object_info += "type %s\n" % str(get_object_type_name(current_object))
-            object_info += "%s\n" % lom_info.description
+            object_info += f"type {get_object_type_name(current_object)!s}\n"
+            object_info += f"{lom_info.description}\n"
             if not is_object_iterable(current_object):
 
                 def accumulate_info(info_list, label):
@@ -651,7 +650,7 @@ class MxDCore:
                     del e
 
         else:
-            self._print_error(device_id, object_id, "call %s: no valid object set" % to_str(param_comps))
+            self._print_error(device_id, object_id, f"call {to_str(param_comps)}: no valid object set")
 
     def obs_set_id(self, device_id, object_id, parameter):
         if self._is_integer(parameter) and self._lom_id_exists(device_id, int(parameter)):
@@ -770,7 +769,7 @@ class MxDCore:
             attribute = self._listenable_property_for(attribute)
             if lom_object is not None:
                 if old_hasattr(lom_object, attribute + "_has_listener"):
-                    getattr(lom_object, "add_%s_listener" % attribute)(listener)
+                    getattr(lom_object, f"add_{attribute}_listener")(listener)
                     new_listeners[(lom_object, attribute)] = listener
 
         object_context[PATH_LISTENER_KEY] = new_listeners
@@ -782,7 +781,7 @@ class MxDCore:
         for (lom_object, attribute), listener in old_listeners.items():
             if lom_object is not None:
                 if getattr(lom_object, attribute + "_has_listener")(listener):
-                    getattr(lom_object, "remove_%s_listener" % attribute)(listener)
+                    getattr(lom_object, f"remove_{attribute}_listener")(listener)
 
     def _path_listener_callback(self, device_id, object_id):
         device_context = self.device_contexts[device_id]
@@ -1066,7 +1065,7 @@ class MxDCore:
 
     def _create_notes_output(self, notes):
         element_format = lambda el: str(int(el) if isinstance(el, bool) else el)
-        note_format = lambda note: "note %s\n" % concatenate_strings(list(map(element_format, note)))
+        note_format = lambda note: f"note {concatenate_strings(list(map(element_format, note)))}\n"
         return "notes %d\n%sdone" % (
             len(notes),
             concatenate_strings((list(map(note_format, notes))), string_format="%s%s"),
@@ -1167,7 +1166,7 @@ class MxDCore:
                     listener_callback = partial(self._observer_property_callback, device_id, object_id)
                     transl_prop_name = self._listenable_property_for(property_name)
                     if old_hasattr(current_object, transl_prop_name + "_has_listener"):
-                        getattr(current_object, "add_%s_listener" % transl_prop_name)(listener_callback)
+                        getattr(current_object, f"add_{transl_prop_name}_listener")(listener_callback)
                         object_context[PROP_LISTENER_KEY] = (listener_callback, current_object, property_name)
                         listener_callback()
                     else:
@@ -1183,7 +1182,7 @@ class MxDCore:
             if listener_callback is not None:
                 transl_prop_name = self._listenable_property_for(property_name)
                 if getattr(current_object, transl_prop_name + "_has_listener")(listener_callback):
-                    getattr(current_object, "remove_%s_listener" % transl_prop_name)(listener_callback)
+                    getattr(current_object, f"remove_{transl_prop_name}_listener")(listener_callback)
         object_context[PROP_LISTENER_KEY] = (None, None, None)
 
     def _observer_property_message_type(self, prop, prop_info):

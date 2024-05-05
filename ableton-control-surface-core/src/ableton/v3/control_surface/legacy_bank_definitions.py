@@ -6,6 +6,7 @@
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1948 bytes
 from _Generic.Devices import BANK_NAME_DICT, DEVICE_BOB_DICT, DEVICE_DICT
+
 from ableton.v2.base.collection import IndexedDict
 
 from ..base import memoize

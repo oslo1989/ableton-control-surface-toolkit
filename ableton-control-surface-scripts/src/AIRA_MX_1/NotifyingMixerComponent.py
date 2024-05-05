@@ -30,5 +30,5 @@ class NotifyingMixerComponent(MixerComponent):
         if 0 <= new_index < self.num_sends:
             self.send_index = new_index
             self._show_msg_callback(
-                "Tone/Filter Controlling Send: %s" % self.song().return_tracks[self.send_index].name,
+                f"Tone/Filter Controlling Send: {self.song().return_tracks[self.send_index].name}",
             )

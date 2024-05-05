@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/grid_resolution.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2502 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import listenable_property, product
 from ableton.v2.control_surface.control import ControlManager, RadioButtonControl, control_list
+from past.utils import old_div
 
 GridQuantization = Live.Clip.GridQuantization
 QUANTIZATION_FACTOR = 24

@@ -79,7 +79,7 @@ class ModesComponent(Component, Renderable):
         return entry and entry.mode
 
     def get_mode_button(self, name):
-        return getattr(self, "%s_button" % name)
+        return getattr(self, f"{name}_button")
 
     def get_mode_groups(self, name):
         entry = self._mode_map.get(name, None)

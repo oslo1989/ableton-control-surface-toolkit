@@ -11,9 +11,8 @@ from functools import partial
 from hashlib import md5
 from operator import attrgetter
 
-from future.utils import iteritems
-
 from ableton.v2.base import Disconnectable, EventObject, Slot, has_event
+from future.utils import iteritems
 
 from .declaration import (
     ModelVisitor,

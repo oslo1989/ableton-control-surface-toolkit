@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 9496 bytes
 import logging
 
-from future.utils import string_types
-
 from ableton.v2.base import old_hasattr
+from future.utils import string_types
 
 logger = logging.getLogger(__name__)
 

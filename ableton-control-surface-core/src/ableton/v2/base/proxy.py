@@ -29,7 +29,7 @@ class ProxyBase:
             if interface:
                 if old_hasattr(interface, name):
                     return getattr(interface, name)
-        raise AttributeError("Does not have attribute %s" % name)
+        raise AttributeError(f"Does not have attribute {name}")
 
     def __setattr__(self, name, value):
         obj = self.proxied_object

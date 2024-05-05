@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/KeyLab_Essential/ringed_encoder.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1654 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.control_surface import MIDI_CC_TYPE, CompoundElement
 from ableton.v2.control_surface.elements import EncoderElement
+from past.utils import old_div
 
 RING_VALUE_MIN = 17
 RING_VALUE_MAX = 27

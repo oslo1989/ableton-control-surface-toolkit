@@ -14,7 +14,7 @@ _control_list_types = {}
 
 
 def control_list(control_type, *a, **k):
-    factory = _control_list_types.get(control_type, None)
+    factory = _control_list_types.get(control_type)
     if not factory:
         factory = mixin(ControlList, control_type)
         _control_list_types[control_type] = factory

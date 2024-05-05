@@ -10,8 +10,6 @@ import math
 from collections import OrderedDict, namedtuple
 from functools import partial
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import (
     EventObject,
@@ -31,6 +29,7 @@ from ableton.v2.base import (
     task,
 )
 from ableton.v2.control_surface.control import EncoderControl
+from past.utils import old_div
 
 logger = logging.getLogger(__name__)
 FocusMarker = namedtuple("FocusMarker", ["name", "position"])
@@ -387,11 +386,11 @@ class TimelineNavigation(EventObject):
             objects_to_show = self._changed_identifiers & touched_identifiers
             if identifier in self.focusable_object_descriptions:
                 if len(objects_to_show) > 1:
-                    logger.debug("Focus all objects %r" % objects_to_show)
+                    logger.debug(f"Focus all objects {objects_to_show!r}")
                     self._focused_identifier = identifier
                     self._show_all_objects(objects_to_show)
                 else:
-                    logger.debug("Focus object %r" % identifier)
+                    logger.debug(f"Focus object {identifier!r}")
                     animate = len(touched_identifiers) <= 1 and self.object_changed(
                         self._focused_identifier,
                         identifier,
@@ -448,7 +447,7 @@ class TimelineNavigation(EventObject):
         if new_region is not None:
             self.set_visible_region(
                 (self._add_margin_to_region(new_region)),
-                source_action=("show_objects %r" % identifiers),
+                source_action=(f"show_objects {identifiers!r}"),
             )
             self._request_select_region = True
             self._locked_roi = None

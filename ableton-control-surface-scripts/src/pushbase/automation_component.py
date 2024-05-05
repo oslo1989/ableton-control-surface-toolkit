@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/automation_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 7109 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, liveobj_valid, task
 from ableton.v2.control_surface.control import EncoderControl, control_list
+from past.utils import old_div
 
 from .device_parameter_component import DeviceParameterComponent
 from .setting import EnumerableSetting

@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launch_Control/SpecialSessionComponent.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 567 bytes
-from future.moves.itertools import zip_longest
-
 from _Framework import SessionComponent
+from future.moves.itertools import zip_longest
 
 
 class SpecialSessionComponent(SessionComponent):

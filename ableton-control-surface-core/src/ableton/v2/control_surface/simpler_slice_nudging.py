@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 4529 bytes
 from contextlib import contextmanager
 
-from past.utils import old_div
-
 import Live
+from past.utils import old_div
 
 from ..base import EventObject, clamp, find_if, listens, liveobj_valid
 

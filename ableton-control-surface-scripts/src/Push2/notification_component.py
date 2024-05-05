@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 3111 bytes
 from weakref import ref
 
-from model.repr import strip_formatted_string
-
 import Live
 from ableton.v2.base import listenable_property, nop
 from ableton.v2.control_surface import Component, ControlElement
+from model.repr import strip_formatted_string
 from pushbase.message_box_component import Notification, strip_restriction_markup_and_format
 
 

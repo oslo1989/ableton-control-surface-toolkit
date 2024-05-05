@@ -10,8 +10,6 @@ from contextlib import contextmanager
 from functools import cmp_to_key, partial
 from itertools import chain, product
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import (
     EventObject,
@@ -28,6 +26,7 @@ from ableton.v2.base import (
 )
 from ableton.v2.control_surface import Component, defaults
 from ableton.v2.control_surface.control import ButtonControl, PlayableControl, control_matrix
+from past.utils import old_div
 
 from .loop_selector_component import create_clip_in_selected_slot
 from .matrix_maps import PLAYHEAD_FEEDBACK_CHANNELS

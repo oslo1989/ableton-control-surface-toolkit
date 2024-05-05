@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/LV2_LX2_LC2_LD2/FaderfoxHelper.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 8255 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import old_hasattr
+from past.utils import old_div
 
 from .Devices import *
 from .Params import *

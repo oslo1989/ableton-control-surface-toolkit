@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launchpad_Pro_MK3/mixer.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3129 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import clamp, listens_group, liveobj_valid
 from ableton.v2.control_surface.control import SendValueControl, control_list
+from future.moves.itertools import zip_longest
 from novation.fixed_radio_button_group import FixedRadioButtonGroup
 from novation.mixer import MixerComponent as MixerComponentBase
 from novation.util import get_midi_color_value_for_track

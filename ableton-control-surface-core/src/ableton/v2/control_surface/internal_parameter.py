@@ -7,9 +7,8 @@
 # Size of source mod 2**32: 14408 bytes
 import contextlib
 
-from past.builtins import unicode
-
 from Live import DeviceParameter
+from past.builtins import unicode
 
 from ..base import EventError, EventObject, Slot, clamp, listenable_property, liveobj_valid, nop
 

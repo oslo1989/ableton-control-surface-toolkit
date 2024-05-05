@@ -5,8 +5,6 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Akai_Force_MPC/transport.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 9938 bytes
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, listens, sign
 from ableton.v2.control_surface.components import TransportComponent as TransportComponentBase
@@ -20,6 +18,7 @@ from ableton.v2.control_surface.control import (
     ToggleButtonControl,
     control_list,
 )
+from past.utils import old_div
 
 from .control import SendReceiveValueControl
 

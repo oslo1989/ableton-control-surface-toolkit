@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/SL_MkIII/mixer.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 6069 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import listens, listens_group, liveobj_valid
 from ableton.v2.control_surface.components import MixerComponent as MixerComponentBase
 from ableton.v2.control_surface.control import ButtonControl, ColorSysexControl, control_list
+from future.moves.itertools import zip_longest
 
 from .channel_strip import ChannelStripComponent
 from .control import ConfigurableTextDisplayControl, TextDisplayControl

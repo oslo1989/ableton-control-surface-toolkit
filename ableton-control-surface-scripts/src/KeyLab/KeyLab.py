@@ -54,7 +54,7 @@ PAD_CHANNEL = 9
 
 
 def get_button_identifier_by_name(identifier):
-    id_pair = BUTTON_HARDWARE_AND_MESSAGE_IDS.get(identifier, None)
+    id_pair = BUTTON_HARDWARE_AND_MESSAGE_IDS.get(identifier)
     if id_pair is not None:
         return id_pair[1]
     return id_pair

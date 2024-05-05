@@ -7,8 +7,6 @@
 # Size of source mod 2**32: 10443 bytes
 from functools import partial
 
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, listens, liveobj_valid, nop
 from ableton.v2.control_surface import (
@@ -28,6 +26,7 @@ from ableton.v2.control_surface.components import (
 from ableton.v2.control_surface.elements import ButtonMatrixElement, EncoderElement, SysexElement
 from ableton.v2.control_surface.midi import CC_STATUS
 from ableton.v2.control_surface.mode import LayerMode
+from past.utils import old_div
 
 from .button import ButtonElement
 from .colors import LIVE_COLORS_TO_MIDI_VALUES, RGB_COLOR_TABLE, Rgb

@@ -9,9 +9,8 @@ import contextlib
 import sys
 import types
 
-from past.builtins import basestring
-
 from ableton.v2.base import liveobj_valid, old_hasattr
+from past.builtins import basestring
 
 from .ControlSurfaceWrapper import is_real_control_surface
 from .LomTypes import (
@@ -42,7 +41,7 @@ def create_lom_doc_string(lom_object):
     if old_hasattr(lom_object, "__doc__"):
         if isinstance(lom_object.__doc__, basestring):
             if len(lom_object.__doc__) > 0:
-                description = "description %s" % lom_object.__doc__.replace("\n", " ").replace(",", "\\,")
+                description = "description {}".format(lom_object.__doc__.replace("\n", " ").replace(",", "\\,"))
     return description
 
 
@@ -348,14 +347,14 @@ class LomPathResolver:
                         lom_object = getattr(lom_object, component)
                     components.append(lom_object)
                 except IndexError:
-                    raise LomAttributeError("invalid index of component '%s'" % prev_component)
+                    raise LomAttributeError(f"invalid index of component '{prev_component}'")
                 except AttributeError:
-                    raise LomAttributeError("invalid path component '%s'" % component)
+                    raise LomAttributeError(f"invalid path component '{component}'")
                 else:
                     prev_component = component
 
             if not is_lom_object(lom_object, self._lom_classes):
-                raise LomObjectError("component '%s' is not an object" % prev_component)
+                raise LomObjectError(f"component '{prev_component}' is not an object")
             return lom_object
         return None
 

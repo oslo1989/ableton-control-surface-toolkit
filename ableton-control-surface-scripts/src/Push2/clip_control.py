@@ -8,8 +8,6 @@
 from contextlib import contextmanager
 from itertools import chain
 
-from past.utils import old_div
-
 from ableton.v2.base import listenable_property, listens, listens_group, liveobj_valid, old_hasattr, task
 from ableton.v2.control_surface import Component, WrappingParameter
 from ableton.v2.control_surface.control import (
@@ -20,6 +18,7 @@ from ableton.v2.control_surface.control import (
 )
 from ableton.v2.control_surface.mode import ModesComponent
 from MidiRemoteScript import MutableVector
+from past.utils import old_div
 from pushbase.clip_control_component import (
     ONE_YEAR_AT_120BPM_IN_BEATS,
     WARP_MODE_NAMES,

@@ -10,11 +10,10 @@ from functools import partial, reduce, wraps
 from itertools import chain
 from numbers import Number
 
+from ableton.v2.base import old_hasattr
 from future import standard_library
 from future.moves.itertools import zip_longest
 from future.utils import raise_
-
-from ableton.v2.base import old_hasattr
 
 standard_library.install_aliases()
 
@@ -88,7 +87,7 @@ def memoize(function):
 def mixin(*args):
     if len(args) == 1:
         return args[0]
-    name = "Mixin_%s" % "_".join(cls.__name__ for cls in args)
+    name = "Mixin_{}".format("_".join(cls.__name__ for cls in args))
     return type(str(name), args, {})
 
 

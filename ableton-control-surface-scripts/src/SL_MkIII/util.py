@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/SL_MkIII/util.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 1118 bytes
-from past.utils import old_div
-
 from ableton.v2.base import clamp, liveobj_valid
 from ableton.v2.control_surface.components import find_nearest_color
 from ableton.v2.control_surface.elements import Color
 from novation.colors import CLIP_COLOR_TABLE, RGB_COLOR_TABLE
+from past.utils import old_div
 
 
 def normalized_parameter_value(param):

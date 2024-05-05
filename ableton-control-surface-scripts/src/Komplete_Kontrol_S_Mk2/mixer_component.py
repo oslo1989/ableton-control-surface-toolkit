@@ -7,10 +7,9 @@
 # Size of source mod 2**32: 2195 bytes
 from functools import partial
 
-from future.moves.itertools import zip_longest
-
 from _Komplete_Kontrol.mixer_component import MixerComponent as MixerComponentBase
 from ableton.v2.control_surface.control.control import InputControl
+from future.moves.itertools import zip_longest
 
 from .meter_display_element import METERS_PER_SEGMENT
 

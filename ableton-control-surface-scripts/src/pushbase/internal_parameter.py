@@ -51,7 +51,7 @@ class ProxyParameter(Proxy):
         if not self._skip_wrapper_lookup:
             obj = self.proxied_object
             return getattr(self.proxied_interface, name, getattr(obj, name))
-        raise AttributeError("Does not have attribute %s" % name)
+        raise AttributeError(f"Does not have attribute {name}")
 
     def __unicode__(self):
         return str(self.proxied_object)

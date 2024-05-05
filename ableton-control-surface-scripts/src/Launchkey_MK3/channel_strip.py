@@ -5,10 +5,9 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launchkey_MK3/channel_strip.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 3461 bytes
-from past.builtins import unicode
-
 from ableton.v2.base import listens, liveobj_valid
 from novation.channel_strip import ChannelStripComponent as ChannelStripComponentBase
+from past.builtins import unicode
 
 from .control import DisplayControl
 

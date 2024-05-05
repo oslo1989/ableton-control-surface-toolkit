@@ -71,7 +71,7 @@ class ChannelStripComponent(Component):
 
         def make_property_slot(name, alias=None):
             alias = alias or name
-            return self.register_slot(None, getattr(self, "_on_%s_changed" % alias), name)
+            return self.register_slot(None, getattr(self, f"_on_{alias}_changed"), name)
 
         self._track_property_slots = [
             make_property_slot("mute"),
@@ -86,7 +86,7 @@ class ChannelStripComponent(Component):
         ]
 
         def make_button_slot(name):
-            return self.register_slot(None, getattr(self, "_%s_value" % name), "value")
+            return self.register_slot(None, getattr(self, f"_{name}_value"), "value")
 
         self._mute_button_slot = make_button_slot("mute")
         self._solo_button_slot = make_button_slot("solo")

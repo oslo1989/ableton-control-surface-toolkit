@@ -7,11 +7,10 @@
 # Size of source mod 2**32: 4174 bytes
 from functools import partial
 
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import clamp, forward_property, listens, liveobj_valid
 from ableton.v2.control_surface.components import MixerComponent as MixerComponentBase
 from ableton.v2.control_surface.control import ButtonControl, SendValueControl
+from future.moves.itertools import zip_longest
 
 from .elements import MAX_NUM_SENDS
 

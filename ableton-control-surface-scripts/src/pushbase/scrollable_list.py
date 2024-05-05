@@ -7,12 +7,11 @@
 # Size of source mod 2**32: 19344 bytes
 from functools import partial
 
-from past.utils import old_div
-
 from ableton.v2.base import BooleanContext, EventObject, clamp, forward_property, in_range, index_if, listens, task
 from ableton.v2.control_surface import Component, defaults
 from ableton.v2.control_surface.components import Scrollable, ScrollComponent
 from ableton.v2.control_surface.control import ButtonControl, EncoderControl, control_list
+from past.utils import old_div
 
 from . import consts
 

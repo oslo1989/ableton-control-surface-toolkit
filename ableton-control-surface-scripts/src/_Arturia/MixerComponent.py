@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_Arturia/MixerComponent.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 2477 bytes
-from future.moves.itertools import zip_longest
-
 from _Framework.MixerComponent import MixerComponent as MixerComponentBase
+from future.moves.itertools import zip_longest
 
 from .ScrollComponent import ScrollComponent
 

@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/note_repeat_component.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 6512 bytes
-from past.utils import old_div
-
 from ableton.v2.base import listens, task
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ButtonControl
+from past.utils import old_div
 
 from .action_with_options_component import OptionsComponent
 

@@ -250,7 +250,7 @@ class Push2(IdentifiableControlSurface, PushBase):
                 self.initialize()
 
     def on_process_state_changed(self, state):
-        logger.debug("Process state changed %r" % state)
+        logger.debug(f"Process state changed {state!r}")
         StateEnum = MidiRemoteScript.Push2ProcessState
         self._connected = state == StateEnum.connected
         if state == StateEnum.died:
@@ -273,7 +273,7 @@ class Push2(IdentifiableControlSurface, PushBase):
 
     def on_user_data_arrived(self, message):
         if self._initialized:
-            logger.debug("User data arrived %r" % message)
+            logger.debug(f"User data arrived {message!r}")
             data = json.loads(message)
             self._process_qml_errors(data)
             self._firmware_update.process_firmware_response(data)
@@ -285,7 +285,7 @@ class Push2(IdentifiableControlSurface, PushBase):
             line = first_error["line"]
             url = first_error["url"]
             description = first_error["description"].replace('"', '\\"')
-            code = "\n" * (line - 1) + 'raise QmlError("%s")' % description
+            code = "\n" * (line - 1) + f'raise QmlError("{description}")'
             exec(compile(code, url, "exec"))
 
     def disconnect(self):

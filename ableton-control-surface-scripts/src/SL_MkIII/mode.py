@@ -5,11 +5,10 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/SL_MkIII/mode.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 4149 bytes
-from future.moves.itertools import zip_longest
-
 from ableton.v2.base import clamp, listens
 from ableton.v2.control_surface.control import ButtonControl, ColorSysexControl, control_list
 from ableton.v2.control_surface.mode import ModesComponent, to_camel_case_name
+from future.moves.itertools import zip_longest
 
 from .control import BinaryControl, TextDisplayControl
 

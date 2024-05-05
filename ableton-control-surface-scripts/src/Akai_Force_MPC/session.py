@@ -7,13 +7,12 @@
 # Size of source mod 2**32: 8913 bytes
 from itertools import count, product
 
-from future.moves.itertools import zip_longest
-from past.utils import old_div
-
 import Live
 from ableton.v2.base import clamp, find_if, in_range, index_if, listens_group, liveobj_valid
 from ableton.v2.control_surface.components import SessionComponent as SessionComponentBase
 from ableton.v2.control_surface.control import ButtonControl, SendValueControl, control_list
+from future.moves.itertools import zip_longest
+from past.utils import old_div
 
 from .elements import NUM_TRACK_CONTROLS
 from .scene import SceneComponent

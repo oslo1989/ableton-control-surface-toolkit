@@ -5,9 +5,8 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/ableton/v2/control_surface/elements/encoder.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 9830 bytes
-from past.utils import old_div
-
 import Live
+from past.utils import old_div
 
 from ...base import Event, clamp, const, in_range, listens, nop
 from ..compound_element import CompoundElement
@@ -89,7 +88,7 @@ class EncoderElement(InputControlElement):
             self._map_mode = map_mode
         self._last_received_value = None
         self._value_normalizer = ENCODER_VALUE_NORMALIZER.get(map_mode, _not_implemented)
-        self._value_accumulator = ENCODER_VALUE_ACCUMULATOR.get(map_mode, None)
+        self._value_accumulator = ENCODER_VALUE_ACCUMULATOR.get(map_mode)
         self._half_value_range = self._max_value / 2
 
     def message_map_mode(self):

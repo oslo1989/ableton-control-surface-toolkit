@@ -9,10 +9,11 @@ from functools import singledispatch
 from typing import Any, Union
 
 import Live
+from Live import Clip, ClipSlot, DeviceParameter, MixerDevice, Scene
+
 from ableton.v2.base import liveobj_valid
 from ableton.v2.control_surface.components import find_nearest_color
 from ableton.v2.control_surface.internal_parameter import InternalParameterBase
-from Live import Clip, ClipSlot, DeviceParameter, MixerDevice, Scene
 
 from ..base import clamp, find_if, hex_to_rgb
 

@@ -8,11 +8,10 @@
 from contextlib import contextmanager
 from functools import partial
 
-from past.utils import old_div
-
 from ableton.v2.base import EventObject, clamp, listenable_property, listens, liveobj_changed, liveobj_valid, nop, task
 from ableton.v2.control_surface import Component, defaults
 from ableton.v2.control_surface.control import ButtonControl, PlayableControl, control_matrix
+from past.utils import old_div
 
 from .consts import MessageBoxText
 from .message_box_component import Messenger

@@ -446,7 +446,7 @@ class ModesComponent(Component):
                 "mode_group_active_color": mode_color_basename + ".On",
             }
         button_control = make_mode_button_control(self, mode_name, behaviour, **colors)
-        self.add_control("%s_button" % mode_name, button_control)
+        self.add_control(f"{mode_name}_button", button_control)
         self._update_mode_buttons(self.selected_mode)
 
     def _get_mode_behaviour(self, name):
@@ -460,7 +460,7 @@ class ModesComponent(Component):
         return entry and entry.mode
 
     def get_mode_button(self, name):
-        return getattr(self, "%s_button" % name)
+        return getattr(self, f"{name}_button")
 
     def _update_mode_buttons(self, selected):
         if self.is_enabled():

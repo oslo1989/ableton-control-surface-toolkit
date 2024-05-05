@@ -121,7 +121,7 @@ class FaderfoxScript:
         script_handle = self.c_instance.handle()
         self.param_map.remove_mappings()
         for c in self.components:
-            self.log("build midi map on %s" % c)
+            self.log(f"build midi map on {c}")
             c.build_midi_map(script_handle, midi_map_handle)
 
     def update_display(self):

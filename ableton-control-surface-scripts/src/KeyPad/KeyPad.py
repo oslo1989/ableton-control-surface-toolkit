@@ -7,8 +7,6 @@
 # Size of source mod 2**32: 8224 bytes
 from functools import partial
 
-from past.utils import old_div
-
 import Live
 from _Framework import (
     ButtonElement,
@@ -22,6 +20,7 @@ from _Framework import (
     TransportComponent,
 )
 from _Framework.InputControlElement import MIDI_CC_TYPE
+from past.utils import old_div
 
 from .CombinedButtonsElement import CombinedButtonsElement
 from .CuePointControlComponent import CuePointControlComponent

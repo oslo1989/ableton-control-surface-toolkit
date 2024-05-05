@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/novation/simple_device.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 6020 bytes
-from future.moves.itertools import zip_longest
-
 from _Generic.Devices import best_of_parameter_bank, parameter_banks
 from ableton.v2.base import EventObject, clamp, depends, listens, liveobj_valid, nop
 from ableton.v2.control_surface import Component
 from ableton.v2.control_surface.control import ToggleButtonControl
+from future.moves.itertools import zip_longest
 
 from .fixed_radio_button_group import FixedRadioButtonGroup
 

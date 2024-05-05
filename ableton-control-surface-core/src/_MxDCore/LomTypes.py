@@ -9,13 +9,13 @@ import ast
 import json
 from collections import namedtuple
 
-from past.builtins import basestring
-
 import Live
 from _Framework import ControlElement, ControlSurface, ControlSurfaceComponent
 from _Framework.Util import is_iterable
-from _MxDCore.ControlSurfaceWrapper import ControlProxy, ControlSurfaceWrapper
 from ableton.v2.base import old_hasattr
+from past.builtins import basestring
+
+from _MxDCore.ControlSurfaceWrapper import ControlProxy, ControlSurfaceWrapper
 
 
 class MFLPropertyFormats:
@@ -129,7 +129,7 @@ def routing_channel_to_json(device):
 
 def json_to_routing_object(obj, property_name, json_dict):
     verify_routings_available_for_object(obj, property_name)
-    objects = getattr(obj, "available_%ss" % property_name, [])
+    objects = getattr(obj, f"available_{property_name}s", [])
     identifier = json_to_data_dict(property_name, json_dict)["identifier"]
     for routing_object in objects:
         if hash(routing_object) == identifier:

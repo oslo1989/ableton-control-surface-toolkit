@@ -5,12 +5,11 @@
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Launch_Control/SpecialMixerComponent.py
 # Compiled at: 2023-11-21 10:21:18
 # Size of source mod 2**32: 4129 bytes
-from future.moves.itertools import zip_longest
-
 from _Framework import MixerComponent
 from _Framework.ModesComponent import LatchingBehaviour, LayerMode, ModesComponent
 from _Framework.SubjectSlot import subject_slot
 from _Framework.Util import clamp
+from future.moves.itertools import zip_longest
 
 
 class SendSelectButtonBehaviour(LatchingBehaviour):

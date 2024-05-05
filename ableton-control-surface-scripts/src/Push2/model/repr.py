@@ -9,9 +9,6 @@ import contextlib
 import re
 from functools import partial
 
-from future.builtins import map, round
-from past.builtins import unicode
-
 from ableton.v2.base import (
     EventError,
     EventObject,
@@ -22,6 +19,8 @@ from ableton.v2.base import (
     liveobj_valid,
     old_hasattr,
 )
+from future.builtins import map, round
+from past.builtins import unicode
 
 from ..device_parameter_icons import get_image_filenames, get_image_filenames_from_ids
 
