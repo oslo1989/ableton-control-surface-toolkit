@@ -9,6 +9,8 @@ TODO
 
 - link to "reference implementatio" in the faderfox code
 
+- forward-looking (from Live 12, but should work with most recent versions of Live)
+
 https://pypi.org/project/ableton-control-surface-scripts/ 
 
 https://pypi.org/project/ableton-control-surface-core/
