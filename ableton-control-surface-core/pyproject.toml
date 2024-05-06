@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ableton-control-surface-core"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
     {name = "Martin Sahlen", email = "martin8900@gmail.com"}
 ]
@@ -21,3 +21,9 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/oslo1989/ableton-control-surface-toolkit"
 Issues = "https://github.com/oslo1989/ableton-control-surface-toolkit/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]

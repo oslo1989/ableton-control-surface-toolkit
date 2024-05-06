@@ -1,3 +1,11 @@
+![pypi](https://img.shields.io/pypi/v/ableton-control-surface-scripts.svg)
+![versions](https://img.shields.io/pypi/pyversions/ableton-control-surface-scripts.svg)
+
+![pypi](https://img.shields.io/pypi/v/ableton-control-surface-core.svg)
+![versions](https://img.shields.io/pypi/pyversions/ableton-control-surface-core.svg)
+
+
+
 TODO
 
 - describe process of reverse engineering the Live / Midi Script objects
