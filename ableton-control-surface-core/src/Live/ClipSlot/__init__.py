@@ -16,14 +16,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -146,14 +152,24 @@ class ClipSlot:
                 bool controls_other_clips_has_listener(TPyHandle<AGroupAndClipSlotBase>,boost::python::api::object)
         """
 
-    def create_clip(self, arg2: float) -> None:
+    def create_audio_clip(self, arg2: object) -> Clip:
         """
-        create_clip( (ClipSlot)arg1, (float)arg2) -> None :
+        create_audio_clip( (ClipSlot)arg1, (object)arg2) -> Clip :
+            Creates an audio clip referencing the file at the given absolute path in the slot.
+            Throws an error when called on non-empty slots or slots in non-audio or frozen tracks, or when the path doesn't point at a valid audio file.
+
+            C++ signature :
+                TWeakPtr<TPyHandle<AClip>> create_audio_clip(TPyHandle<AGroupAndClipSlotBase>,TString)
+        """
+
+    def create_clip(self, arg2: float) -> Clip:
+        """
+        create_clip( (ClipSlot)arg1, (float)arg2) -> Clip :
             Creates an empty clip with the given length in the slot.
             Throws an error when called on non-empty slots or slots in non-MIDI tracks.
 
             C++ signature :
-                void create_clip(TPyHandle<AGroupAndClipSlotBase>,double)
+                TWeakPtr<TPyHandle<AClip>> create_clip(TPyHandle<AGroupAndClipSlotBase>,double)
         """
 
     def delete_clip(self) -> None:

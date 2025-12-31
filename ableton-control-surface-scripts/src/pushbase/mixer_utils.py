@@ -1,18 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/pushbase/mixer_utils.py
-# Compiled at: 2023-11-21 10:21:18
-# Size of source mod 2**32: 431 bytes
-import Live
-from ableton.v2.base import old_hasattr
-
-
-def is_set_to_split_stereo(mixer):
-    modes = Live.MixerDevice.MixerDevice.panning_modes
-    return modes.stereo_split == getattr(mixer, "panning_mode", modes.stereo)
-
-
-def has_pan_mode(mixer):
-    return old_hasattr(mixer, "panning_mode")
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 357 bytes

@@ -1,22 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/Oxygen_Pro/session_navigation.py
-# Compiled at: 2023-11-21 10:21:18
-# Size of source mod 2**32: 740 bytes
-from ableton.v2.control_surface.components import SessionNavigationComponent as SessionNavigationComponentBase
-from ableton.v2.control_surface.control import EncoderControl
-
-
-class SessionNavigationComponent(SessionNavigationComponentBase):
-    scene_encoder = EncoderControl()
-
-    @scene_encoder.value
-    def scene_encoder(self, value, _):
-        if value > 0:
-            if self._vertical_banking.can_scroll_up():
-                self._vertical_banking.scroll_up()
-        else:
-            if self._vertical_banking.can_scroll_down():
-                self._vertical_banking.scroll_down()
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 666 bytes

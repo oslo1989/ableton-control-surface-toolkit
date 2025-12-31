@@ -1,56 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_Framework/IdentifiableControlSurface.py
-# Compiled at: 2023-11-21 10:21:18
-# Size of source mod 2**32: 2662 bytes
-from . import Task
-from .ControlSurface import ControlSurface
-
-SYSEX_IDENTITY_REQUEST = (240, 126, 0, 6, 1, 247)
-
-
-class IdentifiableControlSurface(ControlSurface):
-    identity_request_delay = 0.5
-    identity_request = SYSEX_IDENTITY_REQUEST
-
-    def __init__(self, product_id_bytes=None, *a, **k):
-        (super().__init__)(*a, **k)
-        self._product_id_bytes = product_id_bytes
-        self._identity_response_pending = False
-        self._request_task = self._tasks.add(
-            Task.sequence(Task.wait(self.identity_request_delay), Task.run(self._send_identity_request)),
-        )
-        self._request_task.kill()
-
-    def on_identified(self):
-        raise NotImplementedError
-
-    def port_settings_changed(self):
-        self._request_task.restart()
-
-    def handle_sysex(self, midi_bytes):
-        if self._is_identity_response(midi_bytes):
-            product_id_bytes = self._extract_product_id_bytes(midi_bytes)
-            if product_id_bytes == self._product_id_bytes:
-                self._request_task.kill()
-                if self._identity_response_pending:
-                    self.on_identified()
-                    self._identity_response_pending = False
-            else:
-                self.log_message(
-                    f"MIDI device responded with wrong product id ({self._product_id_bytes!s} != {product_id_bytes!s}).",
-                )
-        else:
-            super().handle_sysex(midi_bytes)
-
-    def _is_identity_response(self, midi_bytes):
-        return midi_bytes[3:5] == (6, 2)
-
-    def _extract_product_id_bytes(self, midi_bytes):
-        return midi_bytes[5 : 5 + len(self._product_id_bytes)]
-
-    def _send_identity_request(self):
-        self._identity_response_pending = True
-        self._send_midi(self.identity_request)
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 2562 bytes

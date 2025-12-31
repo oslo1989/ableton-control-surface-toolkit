@@ -1,42 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/_APC/ControlElementUtils.py
-# Compiled at: 2023-11-21 10:21:18
-# Size of source mod 2**32: 1509 bytes
-import Live
-from _Framework import ButtonElement, EncoderElement, SliderElement
-from _Framework.InputControlElement import MIDI_CC_TYPE, MIDI_NOTE_TYPE
-
-from _APC import RingedEncoderElement
-
-MapMode = Live.MidiMap.MapMode
-
-
-def make_button(channel, identifier, *a, **k):
-    return ButtonElement(True, MIDI_NOTE_TYPE, channel, identifier, *a, **k)
-
-
-def make_pedal_button(identifier, *a, **k):
-    return ButtonElement(True, MIDI_CC_TYPE, 0, identifier, *a, **k)
-
-
-def make_slider(channel, identifier, *a, **k):
-    return SliderElement(MIDI_CC_TYPE, channel, identifier, *a, **k)
-
-
-def make_knob(channel, identifier, *a, **k):
-    return SliderElement(MIDI_CC_TYPE, channel, identifier, *a, **k)
-
-
-def make_ring_encoder(encoder_identifer, button_identifier, name="", *a, **k):
-    button_name = f"{name}_Ring_Mode_Button"
-    button = ButtonElement(False, MIDI_CC_TYPE, 0, button_identifier, name=button_name)
-    encoder = RingedEncoderElement(MIDI_CC_TYPE, 0, encoder_identifer, (MapMode.absolute), *a, name=name, **k)
-    encoder.set_ring_mode_button(button)
-    return encoder
-
-
-def make_encoder(channel, identifier, *a, **k):
-    return EncoderElement(MIDI_CC_TYPE, channel, identifier, MapMode.relative_two_compliment, *a, **k)
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 1435 bytes

@@ -17,13 +17,17 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -84,6 +90,16 @@ class DrumChain:
 
             C++ signature :
                 void add_devices_listener(TChainPyHandle,boost::python::api::object)
+        """
+
+    def add_in_note_listener(self, listener: Callable) -> None:
+        """
+        add_in_note_listener( (DrumChain)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "in_note" has changed.
+
+            C++ signature :
+                void add_in_note_listener(TDrumChainPyHandle,boost::python::api::object)
         """
 
     def add_is_auto_colored_listener(self, listener: Callable) -> None:
@@ -196,6 +212,34 @@ class DrumChain:
                 bool devices_has_listener(TChainPyHandle,boost::python::api::object)
         """
 
+    def duplicate_device(self, arg2: int) -> None:
+        """
+        duplicate_device( (Chain)arg1, (int)arg2) -> None :
+            Duplicate the device at the given index in the chain.
+
+            C++ signature :
+                void duplicate_device(TChainPyHandle,int)
+        """
+
+    def in_note_has_listener(self, listener: Callable) -> bool:
+        """
+        in_note_has_listener( (DrumChain)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "in_note".
+
+            C++ signature :
+                bool in_note_has_listener(TDrumChainPyHandle,boost::python::api::object)
+        """
+
+    def insert_device(self, DeviceName: str, DeviceIndex: int = 0) -> LomObject:
+        """
+        insert_device( (Chain)arg1, (str)DeviceName [, (int)DeviceIndex=-1]) -> LomObject :
+            Add a device at a given index in the chain. At end if -1.
+
+            C++ signature :
+                TWeakPtr<TPyHandleBase> insert_device(TChainPyHandle,std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> [,int=-1])
+        """
+
     def is_auto_colored_has_listener(self, listener: Callable) -> bool:
         """
         is_auto_colored_has_listener( (Chain)arg1, (object)arg2) -> bool :
@@ -284,6 +328,16 @@ class DrumChain:
 
             C++ signature :
                 void remove_devices_listener(TChainPyHandle,boost::python::api::object)
+        """
+
+    def remove_in_note_listener(self, listener: Callable) -> None:
+        """
+        remove_in_note_listener( (DrumChain)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "in_note".
+
+            C++ signature :
+                void remove_in_note_listener(TDrumChainPyHandle,boost::python::api::object)
         """
 
     def remove_is_auto_colored_listener(self, listener: Callable) -> None:
@@ -412,6 +466,12 @@ class DrumChain:
         """
         return True, if this Chain sends out MIDI events. This is
         true for all MIDI Chains with no Instruments.
+        """
+
+    @property
+    def in_note(self) -> Any:
+        """
+        Access to the incoming MIDI note that will trigger this chain.
         """
 
     @property

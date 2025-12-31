@@ -16,14 +16,18 @@ from Live.Conversions import *
 from Live.Device import *
 from Live.DeviceIO import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -79,6 +85,16 @@ class DeviceParameter:
 
             C++ signature :
                 void add_automation_state_listener(TPyHandle<ATimeableValue>,boost::python::api::object)
+        """
+
+    def add_display_value_listener(self, listener: Callable) -> None:
+        """
+        add_display_value_listener( (DeviceParameter)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "display_value" has changed.
+
+            C++ signature :
+                void add_display_value_listener(TPyHandle<ATimeableValue>,boost::python::api::object)
         """
 
     def add_name_listener(self, listener: Callable) -> None:
@@ -130,6 +146,16 @@ class DeviceParameter:
                 void begin_gesture(TPyHandle<ATimeableValue>)
         """
 
+    def display_value_has_listener(self, listener: Callable) -> bool:
+        """
+        display_value_has_listener( (DeviceParameter)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "display_value".
+
+            C++ signature :
+                bool display_value_has_listener(TPyHandle<ATimeableValue>,boost::python::api::object)
+        """
+
     def end_gesture(self) -> None:
         """
         end_gesture( (DeviceParameter)arg1) -> None :
@@ -166,6 +192,16 @@ class DeviceParameter:
 
             C++ signature :
                 void remove_automation_state_listener(TPyHandle<ATimeableValue>,boost::python::api::object)
+        """
+
+    def remove_display_value_listener(self, listener: Callable) -> None:
+        """
+        remove_display_value_listener( (DeviceParameter)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "display_value".
+
+            C++ signature :
+                void remove_display_value_listener(TPyHandle<ATimeableValue>,boost::python::api::object)
         """
 
     def remove_name_listener(self, listener: Callable) -> None:
@@ -249,6 +285,17 @@ class DeviceParameter:
         """
 
     @property
+    def display_value(self) -> int | float:
+        """
+        Get/Set the current value (as visible in the GUI) this parameter.
+        The value must be inside the min/max properties of this device.
+        """
+
+    @display_value.setter
+    def display_value(self, value: int | float) -> None:
+        pass
+
+    @property
     def is_enabled(self) -> bool:
         """
         Returns false if the parameter has been macro mapped or disabled by Max.
@@ -307,7 +354,7 @@ class DeviceParameter:
     @property
     def value(self) -> int | float:
         """
-        Get/Set the current value (as visible in the GUI) this parameter.
+        Get/Set the current internal value of this parameter.
         The value must be inside the min/max properties of this device.
         """
 

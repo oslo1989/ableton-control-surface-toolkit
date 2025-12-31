@@ -14,7 +14,7 @@ kill:
 
 copy-doc-script-to-ableton:
 	@rm -rf ~/Music/Ableton"/User Library/Remote Scripts/AbletonDocSurface"
-	@cp -r "AbletonDocSurface" ~/Music/Ableton"/User Library/Remote Scripts"
+	@cp -r "AbletonDocSurface" ~/Music/Ableton"/User Library/Remote Scripts/"
 	@rm -rf ~/Music/Ableton"/User Library/Remote Scripts/AbletonDocSurface/__pycache__"
 
 copy-generated-live:
@@ -27,16 +27,19 @@ copy-generated: copy-generated-live copy-packages
 
 copy-packages:
 	@python copy_packages.py
+	@rm -rf ableton-control-surface-core/src/Live/Licensing
 
 decompile-live:
-	 decompyle3 /Applications/Ableton\ Live\ 12\ Suite.app/Contents/App-Resources/MIDI\ Remote\ Scripts -r -o build
+	 mkdir -p build && decompyle3 /Applications/Ableton\ Live\ 12\ Suite.app/Contents/App-Resources/MIDI\ Remote\ Scripts -r -o build
 
-decompile: decompile-live fix-parse-errors lint-fix format
+decompile: decompile-live fix-parse-errors
 
 delete-generated-files:
 	 @ls -d */ | grep -v build | xargs rm -rf
 
 lint-format: lint-fix format lint
+
+generate: decompile-live copy-generated lint-format
 
 lint-fix:
 	@ruff ableton-control-surface-core --quiet --config ruff.toml | grep E402 | cut -d: -f1 | xargs autopep8 --in-place # this uses the base config that ignores some rules

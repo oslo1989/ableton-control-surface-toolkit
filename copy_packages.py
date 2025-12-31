@@ -18,6 +18,11 @@ core_packages = [
 cur_dir = os.getcwd() # current dir path
 source = os.path.join(cur_dir,'build')
 scripts_dir = os.path.join(cur_dir, scripts_package)
+core_package_dir = os.path.join(cur_dir, core_package)
+shutil.rmtree(core_package_dir, ignore_errors=True)
+os.makedirs(core_package_dir)
+shutil.rmtree(scripts_dir, ignore_errors=True)
+os.makedirs(scripts_dir)
 for package in core_packages:
     dir_to_move = os.path.join(source, package)
     shutil.move(dir_to_move, os.path.join(cur_dir, core_package))

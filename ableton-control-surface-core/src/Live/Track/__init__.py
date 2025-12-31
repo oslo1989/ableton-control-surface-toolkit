@@ -17,14 +17,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -38,6 +42,8 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -438,6 +444,16 @@ class Track:
                 void add_available_output_routing_types_listener(TTrackPyHandle,boost::python::api::object)
         """
 
+    def add_back_to_arranger_listener(self, listener: Callable) -> None:
+        """
+        add_back_to_arranger_listener( (Track)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "back_to_arranger" has changed.
+
+            C++ signature :
+                void add_back_to_arranger_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
     def add_clip_slots_listener(self, listener: Callable) -> None:
         """
         add_clip_slots_listener( (Track)arg1, (object)arg2) -> None :
@@ -818,6 +834,16 @@ class Track:
                 void add_solo_listener(TTrackPyHandle,boost::python::api::object)
         """
 
+    def add_take_lanes_listener(self, listener: Callable) -> None:
+        """
+        add_take_lanes_listener( (Track)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "take_lanes" has changed.
+
+            C++ signature :
+                void add_take_lanes_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
     def arm_has_listener(self, listener: Callable) -> bool:
         """
         arm_has_listener( (Track)arg1, (object)arg2) -> bool :
@@ -878,6 +904,16 @@ class Track:
                 bool available_output_routing_types_has_listener(TTrackPyHandle,boost::python::api::object)
         """
 
+    def back_to_arranger_has_listener(self, listener: Callable) -> bool:
+        """
+        back_to_arranger_has_listener( (Track)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "back_to_arranger".
+
+            C++ signature :
+                bool back_to_arranger_has_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
     def clip_slots_has_listener(self, listener: Callable) -> bool:
         """
         clip_slots_has_listener( (Track)arg1, (object)arg2) -> bool :
@@ -906,6 +942,35 @@ class Track:
 
             C++ signature :
                 bool color_index_has_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
+    def create_audio_clip(self, arg2: object, arg3: float) -> Clip:
+        """
+        create_audio_clip( (Track)arg1, (object)arg2, (float)arg3) -> Clip :
+            Creates an audio clip referencing the file at the given path and inserts it into the arrangement at the specified time.
+            Throws an error when called on a non-audio or a frozen track, when the specified time is outside the [0., 1576800.] range, when the track is currently being recorded into, or when the path doesn't point to a valid audio file.
+
+            C++ signature :
+                TWeakPtr<TPyHandle<AClip>> create_audio_clip(TTrackPyHandle,TString,double)
+        """
+
+    def create_midi_clip(self, arg2: float, arg3: float) -> Clip:
+        """
+        create_midi_clip( (Track)arg1, (float)arg2, (float)arg3) -> Clip :
+            Creates an empty MIDI clip and inserts it into the arrangement at the specified time.
+            Throws an error when called on a non-MIDI track or a frozen track, when the specified time is outside the [0., 1576800.] range, or when the track is currently being recorded into.
+
+            C++ signature :
+                TWeakPtr<TPyHandle<AClip>> create_midi_clip(TTrackPyHandle,double,double)
+        """
+
+    def create_take_lane(self) -> LomObject:
+        """
+        create_take_lane( (Track)arg1) -> LomObject :
+            Create a new TakeLane for this track.
+
+            C++ signature :
+                TWeakPtr<TPyHandleBase> create_take_lane(TTrackPyHandle)
         """
 
     def current_input_routing_has_listener(self, listener: Callable) -> bool:
@@ -1017,6 +1082,15 @@ class Track:
 
             C++ signature :
                 TWeakPtr<TPyHandle<AClip>> duplicate_clip_to_arrangement(TTrackPyHandle,TPyHandle<AClip>,double)
+        """
+
+    def duplicate_device(self, arg2: int) -> None:
+        """
+        duplicate_device( (Track)arg1, (int)arg2) -> None :
+            Duplicate a device at a given index in the 'devices' list.
+
+            C++ signature :
+                void duplicate_device(TTrackPyHandle,int)
         """
 
     def fired_slot_index_has_listener(self, listener: Callable) -> bool:
@@ -1156,6 +1230,15 @@ class Track:
 
             C++ signature :
                 bool input_sub_routings_has_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
+    def insert_device(self, DeviceName: str, DeviceIndex: int = 0) -> LomObject:
+        """
+        insert_device( (Track)arg1, (str)DeviceName [, (int)DeviceIndex=-1]) -> LomObject :
+            Add a device at a given index in the 'devices' list. At end if -1.
+
+            C++ signature :
+                TWeakPtr<TPyHandleBase> insert_device(TTrackPyHandle,std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> [,int=-1])
         """
 
     def is_frozen_has_listener(self, listener: Callable) -> bool:
@@ -1367,6 +1450,16 @@ class Track:
 
             C++ signature :
                 void remove_available_output_routing_types_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
+    def remove_back_to_arranger_listener(self, listener: Callable) -> None:
+        """
+        remove_back_to_arranger_listener( (Track)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "back_to_arranger".
+
+            C++ signature :
+                void remove_back_to_arranger_listener(TTrackPyHandle,boost::python::api::object)
         """
 
     def remove_clip_slots_listener(self, listener: Callable) -> None:
@@ -1749,6 +1842,16 @@ class Track:
                 void remove_solo_listener(TTrackPyHandle,boost::python::api::object)
         """
 
+    def remove_take_lanes_listener(self, listener: Callable) -> None:
+        """
+        remove_take_lanes_listener( (Track)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "take_lanes".
+
+            C++ signature :
+                void remove_take_lanes_listener(TTrackPyHandle,boost::python::api::object)
+        """
+
     def set_data(self, key: object, value: object) -> None:
         """
         set_data( (Track)arg1, (object)key, (object)value) -> None :
@@ -1775,6 +1878,16 @@ class Track:
 
             C++ signature :
                 void stop_all_clips(TTrackPyHandle [,bool=True])
+        """
+
+    def take_lanes_has_listener(self, listener: Callable) -> bool:
+        """
+        take_lanes_has_listener( (Track)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "take_lanes".
+
+            C++ signature :
+                bool take_lanes_has_listener(TTrackPyHandle,boost::python::api::object)
         """
 
     @property
@@ -1811,6 +1924,12 @@ class Track:
     def available_output_routing_types(self) -> Any:
         """
         Return a list of destination types for output routing.
+        """
+
+    @property
+    def back_to_arranger(self) -> Any:
+        """
+        Indicates if it's possible to go back to playing back the clips in the Arranger.Setting a value 0 will go back to the Arranger playback. Setting on grouptracks will go back to the Arranger on all grouped tracks.
         """
 
     @property
@@ -2175,6 +2294,12 @@ class Track:
     @solo.setter
     def solo(self, value: Any) -> None:
         pass
+
+    @property
+    def take_lanes(self) -> Any:
+        """
+        returns the take lanes.
+        """
 
     @property
     def view(self) -> View:

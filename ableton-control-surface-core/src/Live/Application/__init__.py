@@ -16,14 +16,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -530,14 +536,19 @@ class Application:
         """
 
     def show_on_the_fly_message(
-        self, message: str, buttons: int = 0, enable_markup: bool = False, show_success_icon: bool = False
+        self,
+        message: str,
+        buttons: int = 0,
+        enable_markup: bool = False,
+        show_success_icon: bool = False,
+        push_dialog_type: int = 0,
     ) -> int:
         """
-        show_on_the_fly_message( (Application)arg1, (str)message [, (int)buttons=Application.MessageButtons.OK_BUTTON [, (bool)enable_markup=False [, (bool)show_success_icon=False]]]) -> int :
+        show_on_the_fly_message( (Application)arg1, (str)message [, (int)buttons=Application.MessageButtons.OK_BUTTON [, (bool)enable_markup=False [, (bool)show_success_icon=False [, (int)push_dialog_type=Application.PushDialogType.MESSAGE_BOX]]]]) -> int :
             Same as show_message, but for when there is no predefined Text object.
 
             C++ signature :
-                int show_on_the_fly_message(TPyHandle<ASongApp>,std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> [,int=Application.MessageButtons.OK_BUTTON [,bool=False [,bool=False]]])
+                int show_on_the_fly_message(TPyHandle<ASongApp>,std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> [,int=Application.MessageButtons.OK_BUTTON [,bool=False [,bool=False [,int=Application.PushDialogType.MESSAGE_BOX]]]])
         """
 
     def unavailable_features_has_listener(self, listener: Callable) -> bool:
@@ -679,6 +690,16 @@ class ControlSurfaceProxy:
                 void add_midi_received_listener(APythonControlSurfaceProxy,boost::python::api::object)
         """
 
+    def add_pad_layout_listener(self, listener: Callable) -> None:
+        """
+        add_pad_layout_listener( (ControlSurfaceProxy)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "pad_layout" has changed.
+
+            C++ signature :
+                void add_pad_layout_listener(APythonControlSurfaceProxy,boost::python::api::object)
+        """
+
     def control_values_arrived_has_listener(self, listener: Callable) -> bool:
         """
         control_values_arrived_has_listener( (ControlSurfaceProxy)arg1, (object)arg2) -> bool :
@@ -731,6 +752,16 @@ class ControlSurfaceProxy:
                 bool midi_received_has_listener(APythonControlSurfaceProxy,boost::python::api::object)
         """
 
+    def pad_layout_has_listener(self, listener: Callable) -> bool:
+        """
+        pad_layout_has_listener( (ControlSurfaceProxy)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "pad_layout".
+
+            C++ signature :
+                bool pad_layout_has_listener(APythonControlSurfaceProxy,boost::python::api::object)
+        """
+
     def release_control(self, arg2: int) -> None:
         """
         release_control( (ControlSurfaceProxy)arg1, (int)arg2) -> None :
@@ -757,6 +788,16 @@ class ControlSurfaceProxy:
 
             C++ signature :
                 void remove_midi_received_listener(APythonControlSurfaceProxy,boost::python::api::object)
+        """
+
+    def remove_pad_layout_listener(self, listener: Callable) -> None:
+        """
+        remove_pad_layout_listener( (ControlSurfaceProxy)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "pad_layout".
+
+            C++ signature :
+                void remove_pad_layout_listener(APythonControlSurfaceProxy,boost::python::api::object)
         """
 
     def send_midi(self, arg2: object) -> None:
@@ -796,6 +837,12 @@ class ControlSurfaceProxy:
         pass
 
     @property
+    def pad_layout(self) -> Any:
+        """
+        The layout of pads on Push.
+        """
+
+    @property
     def type_name(self) -> str:
         pass
 
@@ -807,6 +854,22 @@ class MessageButtons:
     """
 
     OK_BUTTON = 0
+    OK_NEW_SET_BUTTON = 1
+    OK_RETRY_BUTTON = 2
+    SAVE_DONT_SAVE_BUTTON = 3
+    OK_ACCOUNT_BUTTON = 4
+    OK_PURCHASE_BUTTON = 5
+
+
+class PushDialogType:
+    """
+    Class that represent an enumeration of values for PushDialogType
+    Specifies the dialog type for Push.
+    """
+
+    MESSAGE_BOX = 0
+    OUT_OF_UNLOCKS_DIALOG = 1
+    RENT_TO_OWN_LICENSE_EXPIRED_DIALOG = 2
 
 
 class UnavailableFeature:

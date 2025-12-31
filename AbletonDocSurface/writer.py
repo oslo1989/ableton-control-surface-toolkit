@@ -5,7 +5,10 @@ import shutil
 from pathlib import Path
 from typing import TextIO
 
+from .logging_utils import get_logger
 from .models import Klazz, Module, Property, Routine, RoutineParam
+
+logger = get_logger(__name__)
 
 INDENT = 4
 SPACE = " "
@@ -160,8 +163,13 @@ def write_module(
     all_modules: list[Module],
     clean_path: bool = False,
 ) -> None:
+    logger.info(f"Writing module: {mod.path} to {path}")
     if clean_path:
-        shutil.rmtree(path)
+        logger.info(f"Cleaning path: {path}")
+        try:
+            shutil.rmtree(path)
+        except FileNotFoundError:
+            logger.warn(f"Failed to clean path {path}, does not exist")
         Path.mkdir(path)
     module_path = path.joinpath(mod.name)
     Path.mkdir(module_path, parents=True)

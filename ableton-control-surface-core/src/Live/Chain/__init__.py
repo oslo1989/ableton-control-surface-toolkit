@@ -16,14 +16,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -164,6 +170,24 @@ class Chain:
 
             C++ signature :
                 bool devices_has_listener(TChainPyHandle,boost::python::api::object)
+        """
+
+    def duplicate_device(self, arg2: int) -> None:
+        """
+        duplicate_device( (Chain)arg1, (int)arg2) -> None :
+            Duplicate the device at the given index in the chain.
+
+            C++ signature :
+                void duplicate_device(TChainPyHandle,int)
+        """
+
+    def insert_device(self, DeviceName: str, DeviceIndex: int = 0) -> LomObject:
+        """
+        insert_device( (Chain)arg1, (str)DeviceName [, (int)DeviceIndex=-1]) -> LomObject :
+            Add a device at a given index in the chain. At end if -1.
+
+            C++ signature :
+                TWeakPtr<TPyHandleBase> insert_device(TChainPyHandle,std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> [,int=-1])
         """
 
     def is_auto_colored_has_listener(self, listener: Callable) -> bool:

@@ -16,14 +16,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,30 +41,10 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
-
-
-class AutomationEnvelope:
-    """
-    Describes parameter automation per clip.
-    """
-
-    def insert_step(self, arg2: float, arg3: float, arg4: float) -> None:
-        """
-        insert_step( (AutomationEnvelope)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
-
-            C++ signature :
-                void insert_step(AAutomation {lvalue},double,double,double)
-        """
-
-    def value_at_time(self, arg2: float) -> float:
-        """
-        value_at_time( (AutomationEnvelope)arg1, (float)arg2) -> float :
-
-            C++ signature :
-                double value_at_time(AAutomation {lvalue},double)
-        """
 
 
 class Clip:
@@ -437,6 +421,16 @@ class Clip:
                 void add_start_marker_listener(TPyHandle<AClip>,boost::python::api::object)
         """
 
+    def add_start_time_listener(self, listener: Callable) -> None:
+        """
+        add_start_time_listener( (Clip)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "start_time" has changed.
+
+            C++ signature :
+                void add_start_time_listener(TPyHandle<AClip>,boost::python::api::object)
+        """
+
     def add_velocity_amount_listener(self, listener: Callable) -> None:
         """
         add_velocity_amount_listener( (Clip)arg1, (object)arg2) -> None :
@@ -505,13 +499,13 @@ class Clip:
                 void apply_note_modifications(TPyHandle<AClip>,std::__1::vector<NClipApi::TNoteInfo, std::__1::allocator<NClipApi::TNoteInfo>>)
         """
 
-    def automation_envelope(self, arg2: object) -> AutomationEnvelope:
+    def automation_envelope(self, arg2: object) -> Envelope:
         """
-        automation_envelope( (Clip)arg1, (DeviceParameter)arg2) -> AutomationEnvelope :
+        automation_envelope( (Clip)arg1, (DeviceParameter)arg2) -> Envelope :
             Return the envelope for the given parameter.Returns None if the envelope doesn't exist.Returns None for Arrangement clips.Returns None for parameters from a different track.
 
             C++ signature :
-                TWeakPtr<AAutomation> automation_envelope(TPyHandle<AClip>,TPyHandle<ATimeableValue>)
+                TWeakPtr<TPyHandle<AAutomation>> automation_envelope(TPyHandle<AClip>,TPyHandle<ATimeableValue>)
         """
 
     def beat_to_sample_time(self, beat_time: float) -> float:
@@ -562,13 +556,13 @@ class Clip:
                 bool color_index_has_listener(TPyHandle<AClip>,boost::python::api::object)
         """
 
-    def create_automation_envelope(self, arg2: object) -> AutomationEnvelope:
+    def create_automation_envelope(self, arg2: object) -> Envelope:
         """
-        create_automation_envelope( (Clip)arg1, (DeviceParameter)arg2) -> AutomationEnvelope :
+        create_automation_envelope( (Clip)arg1, (DeviceParameter)arg2) -> Envelope :
             Creates an envelope for a given parameter and returns it.This should only be used if the envelope doesn't exist.Raises an error if the envelope can't be created.
 
             C++ signature :
-                TWeakPtr<AAutomation> create_automation_envelope(TPyHandle<AClip>,TPyHandle<ATimeableValue>)
+                TWeakPtr<TPyHandle<AAutomation>> create_automation_envelope(TPyHandle<AClip>,TPyHandle<ATimeableValue>)
         """
 
     def crop(self) -> None:
@@ -905,6 +899,17 @@ class Clip:
 
             C++ signature :
                 bool name_has_listener(TPyHandle<AClip>,boost::python::api::object)
+        """
+
+    def note_number_to_name(self, midi_pitch: int) -> str:
+        """
+        note_number_to_name( (Clip)self, (int)midi_pitch) -> str :
+            Return a human-readable name for the given MIDI note number.
+            Takes into account the scale and tonal spelling settings of the clip,
+            as well as the current tuning system (if any)
+
+            C++ signature :
+                TString note_number_to_name(TPyHandle<AClip>,int)
         """
 
     def notes_has_listener(self, listener: Callable) -> bool:
@@ -1320,6 +1325,16 @@ class Clip:
                 void remove_start_marker_listener(TPyHandle<AClip>,boost::python::api::object)
         """
 
+    def remove_start_time_listener(self, listener: Callable) -> None:
+        """
+        remove_start_time_listener( (Clip)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "start_time".
+
+            C++ signature :
+                void remove_start_time_listener(TPyHandle<AClip>,boost::python::api::object)
+        """
+
     def remove_velocity_amount_listener(self, listener: Callable) -> None:
         """
         remove_velocity_amount_listener( (Clip)arg1, (object)arg2) -> None :
@@ -1481,6 +1496,16 @@ class Clip:
                 bool start_marker_has_listener(TPyHandle<AClip>,boost::python::api::object)
         """
 
+    def start_time_has_listener(self, listener: Callable) -> bool:
+        """
+        start_time_has_listener( (Clip)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "start_time".
+
+            C++ signature :
+                bool start_time_has_listener(TPyHandle<AClip>,boost::python::api::object)
+        """
+
     def stop(self) -> None:
         """
         stop( (Clip)arg1) -> None :
@@ -1537,6 +1562,12 @@ class Clip:
 
             C++ signature :
                 bool warping_has_listener(TPyHandle<AClip>,boost::python::api::object)
+        """
+
+    @property
+    def automation_envelopes(self) -> Any:
+        """
+        Const access to a list of all automation envelopes for this clip.
         """
 
     @property
@@ -1677,6 +1708,20 @@ class Clip:
     def is_recording(self) -> bool:
         """
         returns true if the Clip was triggered to record or is recording.
+        """
+
+    @property
+    def is_session_clip(self) -> bool:
+        """
+        return true if this Clip is a Session Clip.
+        A Clip can be either a Session or Arrangement Clip.
+        """
+
+    @property
+    def is_take_lane_clip(self) -> bool:
+        """
+        return true if this Clip is a Take Lane Clip.
+        A Take Lane Clip is also always an Arrangement Clip.
         """
 
     @property

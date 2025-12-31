@@ -59,6 +59,14 @@ class MidiRemoteScript:
                 void request_rebuild_midi_map(TMidiRemoteScript*)
         """
 
+    def reset_input_history(self) -> None:
+        """
+        reset_input_history( (MidiRemoteScript)arg1) -> None :
+
+            C++ signature :
+                void reset_input_history(TMidiRemoteScript*)
+        """
+
     def send_midi(self, arg2: object) -> None:
         """
         send_midi( (MidiRemoteScript)arg1, (tuple)arg2) -> None :
@@ -134,6 +142,14 @@ class MidiRemoteScript:
                 void set_session_highlight(TMidiRemoteScript*,int,int,int,int [,bool=False [,bool=False]])
         """
 
+    def set_sync_sysex_macos(self, arg2: bool) -> None:
+        """
+        set_sync_sysex_macos( (MidiRemoteScript)arg1, (bool)arg2) -> None :
+
+            C++ signature :
+                void set_sync_sysex_macos(TMidiRemoteScript*,bool)
+        """
+
     def show_message(self, arg2: object) -> None:
         """
         show_message( (MidiRemoteScript)arg1, (object)arg2) -> None :
@@ -201,7 +217,7 @@ class MutableVector:
         append( (MutableVector)arg1, (object)arg2) -> None :
 
             C++ signature :
-                void append(std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>> {lvalue},boost::python::api::object)
+                void append(std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>> {lvalue},boost::python::api::object)
         """
 
     def extend(self, arg2: object) -> None:
@@ -209,11 +225,19 @@ class MutableVector:
         extend( (MutableVector)arg1, (object)arg2) -> None :
 
             C++ signature :
-                void extend(std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>> {lvalue},boost::python::api::object)
+                void extend(std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>> {lvalue},boost::python::api::object)
         """
 
 
 class NoteRepeat:
+    @property
+    def aftertouch_ramp_length(self) -> Any:
+        pass
+
+    @property
+    def aftertouch_ramp_start(self) -> Any:
+        pass
+
     @property
     def enabled(self) -> Any:
         pass
@@ -354,6 +378,14 @@ class Push2MidiRemoteScript:
                 void request_rebuild_midi_map(TMidiRemoteScript*)
         """
 
+    def reset_input_history(self) -> None:
+        """
+        reset_input_history( (MidiRemoteScript)arg1) -> None :
+
+            C++ signature :
+                void reset_input_history(TMidiRemoteScript*)
+        """
+
     def send_midi(self, arg2: object) -> None:
         """
         send_midi( (MidiRemoteScript)arg1, (tuple)arg2) -> None :
@@ -444,6 +476,14 @@ class Push2MidiRemoteScript:
 
             C++ signature :
                 void set_session_highlight(TMidiRemoteScript*,int,int,int,int [,bool=False [,bool=False]])
+        """
+
+    def set_sync_sysex_macos(self, arg2: bool) -> None:
+        """
+        set_sync_sysex_macos( (MidiRemoteScript)arg1, (bool)arg2) -> None :
+
+            C++ signature :
+                void set_sync_sysex_macos(TMidiRemoteScript*,bool)
         """
 
     def show_message(self, arg2: object) -> None:
@@ -578,6 +618,14 @@ class PushMidiRemoteScript:
                 void request_rebuild_midi_map(TMidiRemoteScript*)
         """
 
+    def reset_input_history(self) -> None:
+        """
+        reset_input_history( (MidiRemoteScript)arg1) -> None :
+
+            C++ signature :
+                void reset_input_history(TMidiRemoteScript*)
+        """
+
     def send_midi(self, arg2: object) -> None:
         """
         send_midi( (MidiRemoteScript)arg1, (tuple)arg2) -> None :
@@ -659,6 +707,14 @@ class PushMidiRemoteScript:
 
             C++ signature :
                 void set_session_highlight(TMidiRemoteScript*,int,int,int,int [,bool=False [,bool=False]])
+        """
+
+    def set_sync_sysex_macos(self, arg2: bool) -> None:
+        """
+        set_sync_sysex_macos( (MidiRemoteScript)arg1, (bool)arg2) -> None :
+
+            C++ signature :
+                void set_sync_sysex_macos(TMidiRemoteScript*,bool)
         """
 
     def show_message(self, arg2: object) -> None:
@@ -831,7 +887,7 @@ class Visualisation:
             Returns a copy of the view data of the visualisation
 
             C++ signature :
-                std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>> get_view_data(TPush2Visualisation {lvalue})
+                std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>> get_view_data(TPush2Visualisation {lvalue})
         """
 
     def set_view_data(self, view_data: object) -> None:
@@ -840,7 +896,7 @@ class Visualisation:
             Copies given view data to the visualisation
 
             C++ signature :
-                void set_view_data(TPush2Visualisation {lvalue},std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>>)
+                void set_view_data(TPush2Visualisation {lvalue},std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>>)
         """
 
 
@@ -850,5 +906,5 @@ class VisualisationViewData:
         clear( (VisualisationViewData)arg1) -> None :
 
             C++ signature :
-                void clear(std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, ableton::estd::variant<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<ableton::estd::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>> {lvalue})
+                void clear(std::__1::unordered_map<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>, std::__1::hash<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::equal_to<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>> const, std::__1::variant<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::vector<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>, std::__1::allocator<std::__1::variant<int, float, TPush2Visualisation::TVisualisationColor, std::__1::basic_string<wchar_t, std::__1::char_traits<wchar_t>, std::__1::allocator<wchar_t>>>>>>>>> {lvalue})
         """

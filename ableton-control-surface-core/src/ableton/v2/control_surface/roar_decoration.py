@@ -1,32 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/ableton/v2/control_surface/roar_decoration.py
-# Compiled at: 2023-12-21 15:35:35
-# Size of source mod 2**32: 1023 bytes
-from .decoration import LiveObjectDecorator
-from .internal_parameter import EnumWrappingParameter
-
-
-class RoarDeviceDecorator(LiveObjectDecorator):
-    def __init__(self, *a, **k):
-        (super().__init__)(*a, **k)
-        self._additional_parameters = self._create_parameters()
-        self.register_disconnectables(self._additional_parameters)
-
-    @property
-    def parameters(self):
-        return tuple(self._live_object.parameters) + self._additional_parameters
-
-    def _create_parameters(self):
-        return (
-            EnumWrappingParameter(
-                name="Routing",
-                parent=self,
-                values_host=(self._live_object),
-                index_property_host=self,
-                values_property="routing_mode_list",
-                index_property="routing_mode_index",
-            ),
-        )
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 949 bytes

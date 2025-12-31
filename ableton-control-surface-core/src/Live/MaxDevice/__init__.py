@@ -17,14 +17,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
 from Live.MixerDevice import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -135,6 +141,16 @@ class MaxDevice:
 
             C++ signature :
                 void add_is_active_listener(TPyHandle<ADevice>,boost::python::api::object)
+        """
+
+    def add_is_using_compare_preset_b_listener(self, listener: Callable) -> None:
+        """
+        add_is_using_compare_preset_b_listener( (Device)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "is_using_compare_preset_b" has changed.
+
+            C++ signature :
+                void add_is_using_compare_preset_b_listener(TPyHandle<ADevice>,boost::python::api::object)
         """
 
     def add_latency_in_ms_listener(self, listener: Callable) -> None:
@@ -273,6 +289,16 @@ class MaxDevice:
                 bool is_active_has_listener(TPyHandle<ADevice>,boost::python::api::object)
         """
 
+    def is_using_compare_preset_b_has_listener(self, listener: Callable) -> bool:
+        """
+        is_using_compare_preset_b_has_listener( (Device)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "is_using_compare_preset_b".
+
+            C++ signature :
+                bool is_using_compare_preset_b_has_listener(TPyHandle<ADevice>,boost::python::api::object)
+        """
+
     def latency_in_ms_has_listener(self, listener: Callable) -> bool:
         """
         latency_in_ms_has_listener( (Device)arg1, (object)arg2) -> bool :
@@ -373,6 +399,16 @@ class MaxDevice:
                 void remove_is_active_listener(TPyHandle<ADevice>,boost::python::api::object)
         """
 
+    def remove_is_using_compare_preset_b_listener(self, listener: Callable) -> None:
+        """
+        remove_is_using_compare_preset_b_listener( (Device)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "is_using_compare_preset_b".
+
+            C++ signature :
+                void remove_is_using_compare_preset_b_listener(TPyHandle<ADevice>,boost::python::api::object)
+        """
+
     def remove_latency_in_ms_listener(self, listener: Callable) -> None:
         """
         remove_latency_in_ms_listener( (Device)arg1, (object)arg2) -> None :
@@ -433,6 +469,15 @@ class MaxDevice:
                 void remove_parameters_listener(TPyHandle<ADevice>,boost::python::api::object)
         """
 
+    def save_preset_to_compare_ab_slot(self) -> None:
+        """
+        save_preset_to_compare_ab_slot( (Device)arg1) -> None :
+            Saves the current state of the device to the compare AB slot. Only relevant if can_compare_ab, otherwise throws.
+
+            C++ signature :
+                void save_preset_to_compare_ab_slot(TPyHandle<ADevice>)
+        """
+
     def store_chosen_bank(self, arg2: int, arg3: int) -> None:
         """
         store_chosen_bank( (Device)arg1, (int)arg2, (int)arg3) -> None :
@@ -452,6 +497,12 @@ class MaxDevice:
     def audio_outputs(self) -> Any:
         """
         Const access to a list of all audio outputs of the device.
+        """
+
+    @property
+    def can_compare_ab(self) -> bool:
+        """
+        Returns true if the Device has the capability to AB compare.
         """
 
     @property
@@ -488,6 +539,12 @@ class MaxDevice:
     def is_active(self) -> bool:
         """
         Return const access to whether this device is active. This will be false bothwhen the device is off and when it's inside a rack device which is off.
+        """
+
+    @property
+    def is_using_compare_preset_b(self) -> bool:
+        """
+        Returns whether the Device has loaded the preset in compare slot B. Only relevant if can_compare_ab, otherwise errors.
         """
 
     @property

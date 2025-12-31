@@ -17,14 +17,18 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.Groove import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.Scene import *
 from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -169,8 +175,12 @@ class CuePoint:
     @property
     def name(self) -> str:
         """
-        Get/Listen to the name of this CuePoint, as visible in the arranger.
+        Get/Set/Listen to the name of this CuePoint, as visible in the arranger.
         """
+
+    @name.setter
+    def name(self, value: str) -> None:
+        pass
 
     @property
     def time(self) -> Any:
@@ -909,6 +919,16 @@ class Song:
                 void add_root_note_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
+    def add_scale_information_listener(self, listener: Callable) -> None:
+        """
+        add_scale_information_listener( (Song)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "scale_information" has changed.
+
+            C++ signature :
+                void add_scale_information_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
     def add_scale_intervals_listener(self, listener: Callable) -> None:
         """
         add_scale_intervals_listener( (Song)arg1, (object)arg2) -> None :
@@ -917,6 +937,16 @@ class Song:
 
             C++ signature :
                 void add_scale_intervals_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
+    def add_scale_mode_listener(self, listener: Callable) -> None:
+        """
+        add_scale_mode_listener( (Song)arg1, (object)arg2) -> None :
+            Add a listener function or method, which will be called as soon as the
+            property "scale_mode" has changed.
+
+            C++ signature :
+                void add_scale_mode_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
     def add_scale_name_listener(self, listener: Callable) -> None:
@@ -1954,6 +1984,16 @@ class Song:
                 void remove_root_note_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
+    def remove_scale_information_listener(self, listener: Callable) -> None:
+        """
+        remove_scale_information_listener( (Song)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "scale_information".
+
+            C++ signature :
+                void remove_scale_information_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
     def remove_scale_intervals_listener(self, listener: Callable) -> None:
         """
         remove_scale_intervals_listener( (Song)arg1, (object)arg2) -> None :
@@ -1962,6 +2002,16 @@ class Song:
 
             C++ signature :
                 void remove_scale_intervals_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
+    def remove_scale_mode_listener(self, listener: Callable) -> None:
+        """
+        remove_scale_mode_listener( (Song)arg1, (object)arg2) -> None :
+            Remove a previously set listener function or method from
+            property "scale_mode".
+
+            C++ signature :
+                void remove_scale_mode_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
     def remove_scale_name_listener(self, listener: Callable) -> None:
@@ -2134,6 +2184,16 @@ class Song:
                 bool root_note_has_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
+    def scale_information_has_listener(self, listener: Callable) -> bool:
+        """
+        scale_information_has_listener( (Song)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "scale_information".
+
+            C++ signature :
+                bool scale_information_has_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
     def scale_intervals_has_listener(self, listener: Callable) -> bool:
         """
         scale_intervals_has_listener( (Song)arg1, (object)arg2) -> bool :
@@ -2142,6 +2202,16 @@ class Song:
 
             C++ signature :
                 bool scale_intervals_has_listener(TPyHandle<ASong>,boost::python::api::object)
+        """
+
+    def scale_mode_has_listener(self, listener: Callable) -> bool:
+        """
+        scale_mode_has_listener( (Song)arg1, (object)arg2) -> bool :
+            Returns true, if the given listener function or method is connected
+            to the property "scale_mode".
+
+            C++ signature :
+                bool scale_mode_has_listener(TPyHandle<ASong>,boost::python::api::object)
         """
 
     def scale_name_has_listener(self, listener: Callable) -> bool:
@@ -2492,6 +2562,12 @@ class Song:
         """
 
     @property
+    def file_path(self) -> Any:
+        """
+        Get the current Live Set's path on disk.
+        """
+
+    @property
     def groove_amount(self) -> Any:
         """
         Get/Set the global groove amount, that adjust all setup grooves
@@ -2599,6 +2675,12 @@ class Song:
         pass
 
     @property
+    def name(self) -> str:
+        """
+        Get the current Live Set's name.
+        """
+
+    @property
     def nudge_down(self) -> Any:
         """
         Get/Set the status of the nudge down button.
@@ -2672,27 +2754,33 @@ class Song:
     @property
     def root_note(self) -> Any:
         """
-        Set and access the root note (i.e. key) of the song used for control surfaces. The root note can be a number between 0 and 11, with 0 corresponding to C and 11 corresponding to B.
+        Set and access the root (i.e. key) of the song. The root can be a number between 0 and 11, with 0 corresponding to C and 11 corresponding to B.
         """
 
     @property
     def scale_intervals(self) -> Any:
         """
-        Reports the current scale's intervals as a list of integers, starting with the root note and representing the number of halfsteps (e.g. Major -> 0, 2, 4, 5, 7, 9, 11)
+        Reports the current scale's intervals as a list of integers, starting with the root and representing the number of halfsteps (e.g. Major -> 0, 2, 4, 5, 7, 9, 11)
+        """
+
+    @property
+    def scale_mode(self) -> Any:
+        """
+        Access to the Scale Mode setting in Live. When on, key tracks that belong to the currently selected scale are highlighted in Live's MIDI Note Editor, and pitch-based parameters in MIDI Tools and Devices can be edited in scale degrees rather than semitones.
         """
 
     @property
     def scale_name(self) -> str:
         """
-        Set and access the last used scale name for control surfaces. The default scale names that can be saved with a set and recalled are
+        Set and access the currently selected scale by name. The default scale names that can be saved with a set and recalled are
         'Major', 'Minor', 'Dorian', 'Mixolydian' ,'Lydian' ,'Phrygian' ,'Locrian',
         'Whole Tone', 'Half-whole Dim.', 'Whole-half Dim.', 'Minor Blues',
         'Minor Pentatonic', 'Major Pentatonic', 'Harmonic Minor', 'Harmonic Major',
         'Dorian #4', 'Phrygian Dominant', 'Melodic Minor', 'Lydian Augmented',
         'Lydian Dominant', 'Super Locrian', 'Bhairav', 'Hungarian Minor',
         '8-Tone Spanish', 'Hirajoshi', 'In-Sen', 'Iwato', 'Kumoi', 'Pelog Selisir',
-        'Pelog Tembung', 'Messaien 3', 'Messaien 4', 'Messaien 5', 'Messaien 6',
-        'Messaien 7'
+        'Pelog Tembung', 'Messiaen 3', 'Messiaen 4', 'Messiaen 5', 'Messiaen 6',
+        'Messiaen 7'
         """
 
     @property
@@ -2852,32 +2940,6 @@ class TimeFormat:
     smpte_30 = 3
     smpte_30_drop = 4
     smpte_29 = 5
-
-
-class TuningSystem:
-    """
-    Represents a Tuning System and its properties.
-    """
-
-    @property
-    def maximum_note(self) -> Any:
-        """
-        Returns a tuple where the first entry is the index within the pseudo octave and
-        the second entry is the octave or the maximum note in the tuning system.
-        """
-
-    @property
-    def minimum_note(self) -> Any:
-        """
-        Returns a tuple where the first entry is the index within the pseudo octave and
-        the second entry is the octave or the minimum note in the tuning system.
-        """
-
-    @property
-    def number_of_notes_in_pseudo_octave(self) -> Any:
-        """
-        Get the number of notes in the pseudo octave.
-        """
 
 
 def get_all_scales_ordered() -> tuple:

@@ -1,28 +1,7 @@
-# decompyle3 version 3.9.0
-# Python bytecode version base 3.7.0 (3394)
-# Decompiled from: Python 3.7.16 (default, Jan 17 2023, 09:28:58)
-# [Clang 14.0.6 ]
+# decompyle3 version 3.9.1
+# Python bytecode version base 3.11 (3495)
+# Decompiled from: Python 3.7.13 (default, Dec 31 2025, 13:18:49)
+# [Clang 17.0.0 (clang-1700.4.4.1)]
 # Embedded file name: output/Live/mac_universal_64_static/Release/python-bundle/MIDI Remote Scripts/AxiomPro/__init__.py
-# Compiled at: 2023-11-21 10:21:18
-# Size of source mod 2**32: 1214 bytes
-from _Framework.Capabilities import *
-
-from .AxiomPro import AxiomPro
-
-
-def create_instance(c_instance):
-    return AxiomPro(c_instance)
-
-
-def get_capabilities():
-    return {
-        CONTROLLER_ID_KEY: controller_id(vendor_id=1891, product_ids=[8227], model_name="Axiom Pro 49"),
-        PORTS_KEY: [
-            inport(props=[NOTES_CC]),
-            inport(props=[NOTES_CC, SCRIPT]),
-            inport(props=[NOTES_CC]),
-            inport(props=[NOTES_CC]),
-            outport(props=[]),
-            outport(props=[SCRIPT]),
-        ],
-    }
+# Compiled at: 2025-11-22 16:00:32
+# Size of source mod 2**32: 1140 bytes

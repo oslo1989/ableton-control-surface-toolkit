@@ -16,14 +16,18 @@ import Live.Device
 import Live.DeviceIO
 import Live.DeviceParameter
 import Live.DriftDevice
+import Live.DrumCellDevice
 import Live.DrumChain
 import Live.DrumPad
+import Live.Envelope
 import Live.Eq8Device
 import Live.Groove
 import Live.GroovePool
 import Live.HybridReverbDevice
+import Live.Licensing
 import Live.Listener
 import Live.LomObject
+import Live.LooperDevice
 import Live.MaxDevice
 import Live.MeldDevice
 import Live.MidiMap
@@ -37,5 +41,7 @@ import Live.ShifterDevice
 import Live.SimplerDevice
 import Live.Song
 import Live.SpectralResonatorDevice
+import Live.TakeLane
 import Live.Track
+import Live.TuningSystem
 import Live.WavetableDevice

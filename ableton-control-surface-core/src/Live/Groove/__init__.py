@@ -17,13 +17,17 @@ from Live.Device import *
 from Live.DeviceIO import *
 from Live.DeviceParameter import *
 from Live.DriftDevice import *
+from Live.DrumCellDevice import *
 from Live.DrumChain import *
 from Live.DrumPad import *
+from Live.Envelope import *
 from Live.Eq8Device import *
 from Live.GroovePool import *
 from Live.HybridReverbDevice import *
+from Live.Licensing import *
 from Live.Listener import *
 from Live.LomObject import *
+from Live.LooperDevice import *
 from Live.MaxDevice import *
 from Live.MeldDevice import *
 from Live.MidiMap import *
@@ -37,7 +41,9 @@ from Live.ShifterDevice import *
 from Live.SimplerDevice import *
 from Live.Song import *
 from Live.SpectralResonatorDevice import *
+from Live.TakeLane import *
 from Live.Track import *
+from Live.TuningSystem import *
 from Live.WavetableDevice import *
 
 
@@ -81,7 +87,7 @@ class Groove:
             property "name" has changed.
 
             C++ signature :
-                void add_name_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void add_name_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def add_quantization_amount_listener(self, listener: Callable) -> None:
@@ -91,7 +97,7 @@ class Groove:
             property "quantization_amount" has changed.
 
             C++ signature :
-                void add_quantization_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void add_quantization_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def add_random_amount_listener(self, listener: Callable) -> None:
@@ -101,7 +107,7 @@ class Groove:
             property "random_amount" has changed.
 
             C++ signature :
-                void add_random_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void add_random_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def add_timing_amount_listener(self, listener: Callable) -> None:
@@ -111,7 +117,7 @@ class Groove:
             property "timing_amount" has changed.
 
             C++ signature :
-                void add_timing_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void add_timing_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def add_velocity_amount_listener(self, listener: Callable) -> None:
@@ -121,7 +127,7 @@ class Groove:
             property "velocity_amount" has changed.
 
             C++ signature :
-                void add_velocity_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void add_velocity_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def name_has_listener(self, listener: Callable) -> bool:
@@ -131,7 +137,7 @@ class Groove:
             to the property "name".
 
             C++ signature :
-                bool name_has_listener(TPyHandle<AGroove>,boost::python::api::object)
+                bool name_has_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def quantization_amount_has_listener(self, listener: Callable) -> bool:
@@ -141,7 +147,7 @@ class Groove:
             to the property "quantization_amount".
 
             C++ signature :
-                bool quantization_amount_has_listener(TPyHandle<AGroove>,boost::python::api::object)
+                bool quantization_amount_has_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def random_amount_has_listener(self, listener: Callable) -> bool:
@@ -151,7 +157,7 @@ class Groove:
             to the property "random_amount".
 
             C++ signature :
-                bool random_amount_has_listener(TPyHandle<AGroove>,boost::python::api::object)
+                bool random_amount_has_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def remove_name_listener(self, listener: Callable) -> None:
@@ -161,7 +167,7 @@ class Groove:
             property "name".
 
             C++ signature :
-                void remove_name_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void remove_name_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def remove_quantization_amount_listener(self, listener: Callable) -> None:
@@ -171,7 +177,7 @@ class Groove:
             property "quantization_amount".
 
             C++ signature :
-                void remove_quantization_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void remove_quantization_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def remove_random_amount_listener(self, listener: Callable) -> None:
@@ -181,7 +187,7 @@ class Groove:
             property "random_amount".
 
             C++ signature :
-                void remove_random_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void remove_random_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def remove_timing_amount_listener(self, listener: Callable) -> None:
@@ -191,7 +197,7 @@ class Groove:
             property "timing_amount".
 
             C++ signature :
-                void remove_timing_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void remove_timing_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def remove_velocity_amount_listener(self, listener: Callable) -> None:
@@ -201,7 +207,7 @@ class Groove:
             property "velocity_amount".
 
             C++ signature :
-                void remove_velocity_amount_listener(TPyHandle<AGroove>,boost::python::api::object)
+                void remove_velocity_amount_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def timing_amount_has_listener(self, listener: Callable) -> bool:
@@ -211,7 +217,7 @@ class Groove:
             to the property "timing_amount".
 
             C++ signature :
-                bool timing_amount_has_listener(TPyHandle<AGroove>,boost::python::api::object)
+                bool timing_amount_has_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     def velocity_amount_has_listener(self, listener: Callable) -> bool:
@@ -221,7 +227,7 @@ class Groove:
             to the property "velocity_amount".
 
             C++ signature :
-                bool velocity_amount_has_listener(TPyHandle<AGroove>,boost::python::api::object)
+                bool velocity_amount_has_listener(TPyHandle<AAbstractGroove>,boost::python::api::object)
         """
 
     @property

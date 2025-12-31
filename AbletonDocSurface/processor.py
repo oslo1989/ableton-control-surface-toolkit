@@ -6,7 +6,10 @@ import os
 from types import ModuleType
 from typing import Any, Callable, Generator
 
+from .logging_utils import get_logger
 from .models import Enum, Klazz, Module, ProcessMemberResult, Property, Routine, RoutineParam, RoutineType
+
+logger = get_logger(__name__)
 
 
 def standard_lib_names_gen(include_underscored: bool = False) -> Generator[str, None, None]:
@@ -171,14 +174,14 @@ def process_property(
 
 def process_member(member: tuple[str, Any], path: str = "") -> ProcessMemberResult:
     doc = inspect.getdoc(member[1])
-    # logging.info("------------------------------------------------------------------------------------")
-    # logging.info(f"DOC: {doc}")
-    # logging.info(f"NAME: {member[0]}")
-    # logging.info(f"TYPE: {type(member[1])}")
-    # logging.info(str(type(member[1])))
-    # logging.info(f"MEMBERS: {inspect.getmembers(member[1])}")
-    # logging.info(f"INSPECT class: {inspect.isclass(member[1])}")
-    # logging.info(f"INSPECT method: {inspect.isroutine(member[1])}")
+    logger.debug("------------------------------------------------------------------------------------")
+    logger.debug(f"DOC: {doc}")
+    logger.debug(f"NAME: {member[0]}")
+    logger.debug(f"TYPE: {type(member[1])}")
+    logger.debug(str(type(member[1])))
+    logger.debug(f"MEMBERS: {inspect.getmembers(member[1])}")
+    logger.debug(f"INSPECT class: {inspect.isclass(member[1])}")
+    logger.debug(f"INSPECT method: {inspect.isroutine(member[1])}")
 
     result = ProcessMemberResult(
         routines=[],
