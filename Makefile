@@ -39,7 +39,10 @@ delete-generated-files:
 
 lint-format: lint-fix format lint
 
-generate: decompile-live copy-generated lint-format
+generate-py-typed:
+	@python add_py_typed.py
+
+generate: decompile-live copy-generated lint-format generate-py-typed
 
 lint-fix:
 	@ruff ableton-control-surface-core --quiet --config ruff.toml | grep E402 | cut -d: -f1 | xargs autopep8 --in-place # this uses the base config that ignores some rules
