@@ -8,6 +8,8 @@
 
 TODO
 
+- live recently updated to pythin 3.11, 
+  - look at https://github.com/syssec-utd/pylingual or https://github.com/zrax/pycdc to support decompilation
 - describe process of reverse engineering the Live / Midi Script objects
   - none of the code is meant to be runnable, its just for reference and documentation purposes
   - 

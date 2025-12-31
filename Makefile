@@ -1,6 +1,6 @@
 create-venv:
-	@pyenv virtualenv 3.7.13 ableton-control-surface-toolkit-venv-3.7.13
-	#pyenv activate ableton-control-surface-toolkit-venv-3.7.13
+	@pyenv virtualenv 3.11 ableton-control-surface-toolkit-venv-3.11
+	#pyenv activate ableton-control-surface-toolkit-venv-3.11
 
 install-deps:
 	@pip install --upgrade pip
